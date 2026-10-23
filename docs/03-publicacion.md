@@ -40,7 +40,7 @@ La carpeta `docs/` tiene estos documentos de trabajo y no se publica.
 
 Hay dos cosas marcadas con la palabra `PENDIENTE` dentro de `index.html`:
 
-1. **Número de WhatsApp Business.** El botón "Escríbenos por WhatsApp" está desactivado (dentro de un comentario) hasta tener el número. Para activarlo: buscar `58XXXXXXXXXX`, reemplazarlo por el número real con código de país, sin `+` ni espacios (ejemplo: `584121234567`), y sacar la línea del botón fuera del comentario. La web se puede publicar sin este paso.
+1. **Número de WhatsApp Business.** Buscar `58XXXXXXXXXX` y reemplazarlo por el número real con código de país, sin `+` ni espacios. Ejemplo: `584121234567`. Mientras no se cambie, el botón "Escríbenos por WhatsApp" lleva a un número inexistente. No publicar antes de reemplazarlo.
 2. **Fragmento de Cloudflare Web Analytics.** Ver sección 6. Se puede publicar sin esto y agregarlo después.
 
 Y una recomendación: reducir las preguntas del formulario de Google. Hoy tiene 14. Cuantas menos preguntas, más personas terminan el registro. Edad y sexo no son necesarias para contactar a alguien.
