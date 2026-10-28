@@ -16,7 +16,6 @@ Todo lo que se publica está ahí. No hay base de datos ni servidor propio: es u
 | `og.jpg` | Imagen de vista previa cuando se comparte el enlace en WhatsApp, Facebook, Instagram o Telegram. 1200 x 630 px. |
 | `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Ícono de la pestaña del navegador y de la pantalla de inicio del celular. |
 | `_headers` | Cabeceras de seguridad y de caché que Cloudflare Pages aplica automáticamente. |
-| `_redirects` | Redirige `www.trabajale.ai` a `trabajale.ai`. |
 | `robots.txt`, `sitemap.xml` | Para que Google indexe la página correctamente. |
 
 La carpeta `docs/` tiene estos documentos de trabajo y no se publica.
@@ -59,9 +58,10 @@ Hay dos caminos. Los dos son gratis y dan certificado HTTPS automático.
 3. Nombre del proyecto: `trabajale`. Clic en **Create project**.
 4. Arrastra **el contenido de la carpeta `sitio/`** (los archivos, no la carpeta en sí) y clic en **Deploy site**.
 5. Cloudflare te da una dirección temporal tipo `trabajale.pages.dev`. Ábrela en el celular y revisa que todo se vea bien.
-6. Para conectar el dominio: en el proyecto, pestaña **Custom domains**, **Set up a custom domain**, escribe `trabajale.ai` y confirma. Repite con `www.trabajale.ai`. Como el dominio está en el mismo Cloudflare, se configura solo en unos minutos.
+6. Para conectar el dominio: en el proyecto, pestaña **Dominios personalizados**, **Configurar un dominio personalizado**, escribe `trabajale.ai` y **Activar dominio**. Repite con `www.trabajale.ai`. Como el dominio está en el mismo Cloudflare, se configura solo en unos minutos.
+7. Redirección de `www` a `trabajale.ai` (el archivo `_redirects` de Pages no sirve para esto, se hace con una regla del dominio): menú **Dominios**, elegir `trabajale.ai`, **Reglas**, **Reglas de redireccionamiento**, **Crear regla**, plantilla **Redirect from WWW to Root**, **Implementar**. Comprobar abriendo `https://www.trabajale.ai`: debe terminar en `https://trabajale.ai`.
 
-Cada vez que haya un cambio en la web, se repite el paso 4 desde la pestaña **Deployments**, botón **Create deployment**. Toma un minuto.
+Cada vez que haya un cambio en la web, se repite el paso 4 desde la pestaña **Implementaciones**, botón **Crear implementación**. Toma un minuto.
 
 ### Camino B: conectar con GitHub (cada cambio se publica solo)
 
@@ -69,7 +69,7 @@ Cada vez que haya un cambio en la web, se repite el paso 4 desde la pestaña **D
 2. En Cloudflare: **Workers & Pages**, **Create**, **Pages**, **Connect to Git**, elige el repositorio.
 3. Configuración de build: framework **None**, build command vacío, **Build output directory**: `sitio`.
 4. **Save and Deploy**. A partir de ahí, cada vez que se suba un cambio al repositorio, Cloudflare publica la nueva versión sola en uno o dos minutos.
-5. El dominio se conecta igual que en el camino A, paso 6.
+5. El dominio y la redirección de www se configuran igual que en el camino A, pasos 6 y 7.
 
 Recomendación: empezar por el camino A para salir rápido. Pasar al B cuando haya cambios frecuentes.
 
@@ -115,9 +115,10 @@ Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmai
 
 - [x] Número de WhatsApp reemplazado en `index.html` (+58 422 872 2252).
 - [ ] Formulario de Google revisado: preguntas, casilla de consentimiento, hoja de cálculo no compartida públicamente.
-- [ ] Dominio comprado en Cloudflare, con renovación automática y bloqueo de transferencia activados.
-- [ ] Web publicada en Cloudflare Pages y probada en un celular real.
-- [ ] Dominio `trabajale.ai` y `www` conectados al proyecto de Pages.
+- [x] Dominio comprado en Cloudflare (28 de octubre de 2026), con bloqueo de transferencia. Revisar que la renovación automática esté activa.
+- [x] Web publicada en Cloudflare Pages (28 de octubre de 2026) y probada en un celular real.
+- [x] Dominio `trabajale.ai` y `www` conectados al proyecto de Pages, certificado activo.
+- [ ] Regla de redirección de www a trabajale.ai creada (camino A, paso 7).
 - [ ] Vista previa probada: enviarse el enlace por WhatsApp a uno mismo y confirmar que sale la imagen azul con el título.
 - [ ] Web Analytics agregado.
 - [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página.
