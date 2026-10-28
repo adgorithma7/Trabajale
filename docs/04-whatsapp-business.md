@@ -1,7 +1,7 @@
 # Trabájale: configuración de WhatsApp Business
 
 Actualizado: 28 de octubre de 2026.
-Número: +58 422 872 2252. Enlace en la web: `https://wa.me/584228722252`.
+Número: +58 422 872 2252. Enlace en la web: `https://wa.me/584228722252` con el mensaje prellenado "Hola, quiero información sobre Trabájale".
 
 Todo se hace desde el teléfono que tiene la SIM de ese número. Toma entre 20 y 30 minutos. Es gratis.
 
