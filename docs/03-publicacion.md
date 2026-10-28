@@ -12,7 +12,8 @@ Todo lo que se publica está ahí. No hay base de datos ni servidor propio: es u
 |---|---|
 | `index.html` | La página completa: textos, estilos y enlaces. Es el único archivo que normalmente se edita. |
 | `404.html` | Página que se muestra si alguien entra a una dirección que no existe. |
-| `hero.jpg` | Foto de fondo de la portada. |
+| `luca.webp` | Personaje Luca de la portada, con fondo transparente. |
+| `reel.mp4`, `poster.jpg` | Video vertical de 30 segundos y su imagen de portada. Formato H.264 + AAC, menos de 5 MB. |
 | `og.jpg` | Imagen de vista previa cuando se comparte el enlace en WhatsApp, Facebook, Instagram o Telegram. 1200 x 630 px. |
 | `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Ícono de la pestaña del navegador y de la pantalla de inicio del celular. |
 | `_headers` | Cabeceras de seguridad y de caché que Cloudflare Pages aplica automáticamente. |
@@ -56,7 +57,7 @@ Hay dos caminos. Los dos son gratis y dan certificado HTTPS automático.
 1. Entra a tu panel de Cloudflare.
 2. Menú lateral: **Workers & Pages**, botón **Create**, pestaña **Pages**, opción **Upload assets**.
 3. Nombre del proyecto: `trabajale`. Clic en **Create project**.
-4. Arrastra **el contenido de la carpeta `sitio/`** (los archivos, no la carpeta en sí) y clic en **Deploy site**.
+4. Arrastra **el contenido de la carpeta `sitio/`** (los 12 archivos, no la carpeta en sí) y clic en **Implementar sitio**.
 5. Cloudflare te da una dirección temporal tipo `trabajale.pages.dev`. Ábrela en el celular y revisa que todo se vea bien.
 6. Para conectar el dominio: en el proyecto, pestaña **Dominios personalizados**, **Configurar un dominio personalizado**, escribe `trabajale.ai` y **Activar dominio**. Repite con `www.trabajale.ai`. Como el dominio está en el mismo Cloudflare, se configura solo en unos minutos.
 7. Redirección de `www` a `trabajale.ai` (el archivo `_redirects` de Pages no sirve para esto, se hace con una regla del dominio): menú **Dominios**, elegir `trabajale.ai`, **Reglas**, **Reglas de redireccionamiento**, **Crear regla**, plantilla **Redirect from WWW to Root**, **Implementar**. Comprobar abriendo `https://www.trabajale.ai`: debe terminar en `https://trabajale.ai`.
