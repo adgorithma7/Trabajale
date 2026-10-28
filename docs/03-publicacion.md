@@ -1,6 +1,6 @@
 # Trabájale: cómo está hecha la web, dónde quedan los datos y cómo publicarla
 
-Actualizado: 23 de octubre de 2026.
+Actualizado: 28 de octubre de 2026.
 
 ---
 
@@ -38,10 +38,11 @@ La carpeta `docs/` tiene estos documentos de trabajo y no se publica.
 
 ## 3. Pendientes antes de publicar
 
-Hay dos cosas marcadas con la palabra `PENDIENTE` dentro de `index.html`:
+Queda una sola cosa marcada con la palabra `PENDIENTE` dentro de `index.html`:
 
-1. **Número de WhatsApp Business.** Buscar `58XXXXXXXXXX` y reemplazarlo por el número real con código de país, sin `+` ni espacios. Ejemplo: `584121234567`. Mientras no se cambie, el botón "Escríbenos por WhatsApp" lleva a un número inexistente. No publicar antes de reemplazarlo.
-2. **Fragmento de Cloudflare Web Analytics.** Ver sección 6. Se puede publicar sin esto y agregarlo después.
+1. **Fragmento de Cloudflare Web Analytics.** Ver sección 6. Se puede publicar sin esto y agregarlo después.
+
+El botón "Escríbenos por WhatsApp" ya apunta al número +58 422 872 2252 (`https://wa.me/584228722252`). Si el número cambia, buscar `wa.me/` en `index.html` y reemplazarlo.
 
 Y una recomendación: reducir las preguntas del formulario de Google. Hoy tiene 14. Cuantas menos preguntas, más personas terminan el registro. Edad y sexo no son necesarias para contactar a alguien.
 
@@ -112,7 +113,7 @@ Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmai
 
 ## 8. Checklist de salida a producción
 
-- [ ] Número de WhatsApp reemplazado en `index.html`.
+- [x] Número de WhatsApp reemplazado en `index.html` (+58 422 872 2252).
 - [ ] Formulario de Google revisado: preguntas, casilla de consentimiento, hoja de cálculo no compartida públicamente.
 - [ ] Dominio comprado en Cloudflare, con renovación automática y bloqueo de transferencia activados.
 - [ ] Web publicada en Cloudflare Pages y probada en un celular real.

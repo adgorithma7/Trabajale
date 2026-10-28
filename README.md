@@ -17,4 +17,4 @@ Luego abrir http://localhost:8787/
 
 ## Pendientes antes de publicar
 
-Buscar `PENDIENTE` en `sitio/index.html`: número de WhatsApp y fragmento de Cloudflare Web Analytics.
+Buscar `PENDIENTE` en `sitio/index.html`: fragmento de Cloudflare Web Analytics (opcional, se puede agregar después de publicar).
