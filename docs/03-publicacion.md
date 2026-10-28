@@ -118,7 +118,7 @@ Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmai
 - [x] Dominio comprado en Cloudflare (28 de octubre de 2026), con bloqueo de transferencia. Revisar que la renovación automática esté activa.
 - [x] Web publicada en Cloudflare Pages (28 de octubre de 2026) y probada en un celular real.
 - [x] Dominio `trabajale.ai` y `www` conectados al proyecto de Pages, certificado activo.
-- [ ] Regla de redirección de www a trabajale.ai creada (camino A, paso 7).
+- [x] Regla de redirección de www a trabajale.ai creada y comprobada (28 de octubre de 2026).
 - [ ] Vista previa probada: enviarse el enlace por WhatsApp a uno mismo y confirmar que sale la imagen azul con el título.
 - [ ] Web Analytics agregado.
 - [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página.
