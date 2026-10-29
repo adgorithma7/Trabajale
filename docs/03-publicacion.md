@@ -38,9 +38,7 @@ La carpeta `docs/` tiene estos documentos de trabajo y no se publica.
 
 ## 3. Pendientes antes de publicar
 
-Queda una sola cosa marcada con la palabra `PENDIENTE` dentro de `index.html`:
-
-1. **Fragmento de Cloudflare Web Analytics.** Ver sección 6. Se puede publicar sin esto y agregarlo después.
+Ya no queda nada marcado como `PENDIENTE` dentro de `index.html`.
 
 El botón "Escríbenos por WhatsApp" ya apunta al número +58 422 872 2252 (`https://wa.me/584228722252`). Si el número cambia, buscar `wa.me/` en `index.html` y reemplazarlo.
 
@@ -90,10 +88,9 @@ Los colores están definidos al inicio del archivo, en la parte que empieza con 
 
 Gratis, sin cookies, sin aviso legal de cookies.
 
-1. En el panel de Cloudflare: **Analytics & Logs**, **Web Analytics**, **Add a site**.
-2. Escribe `trabajale.ai` y continúa. Cloudflare muestra un fragmento que empieza con `<script defer src='https://static.cloudflareinsights.com/beacon.min.js'`.
-3. Copia ese fragmento completo y pégalo en `sitio/index.html`, justo donde dice `Cloudflare Web Analytics` cerca del final del archivo, reemplazando el comentario `PENDIENTE`.
-4. Publica de nuevo. Las visitas empiezan a verse en unas horas en la misma sección de Web Analytics.
+Activado el 28 de octubre de 2026 con **configuración automática**: como `trabajale.ai` pasa por la red de Cloudflare, el medidor se inserta solo en cada página. No hay código que pegar ni mantener en `index.html`.
+
+Dónde verlo: panel de Cloudflare, **Observabilidad**, **Web Analytics**, sitio `trabajale.ai`. Muestra visitas, páginas vistas, países y dispositivos. No identifica personas.
 
 Si en el futuro se van a hacer anuncios en Facebook o Instagram, se agrega Meta Pixel. Eso sí requiere aviso de cookies; se hace en ese momento.
 
@@ -121,6 +118,6 @@ Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmai
 - [x] Dominio `trabajale.ai` y `www` conectados al proyecto de Pages, certificado activo.
 - [x] Regla de redirección de www a trabajale.ai creada y comprobada (28 de octubre de 2026).
 - [ ] Vista previa probada: enviarse el enlace por WhatsApp a uno mismo y confirmar que sale la imagen azul con el título.
-- [ ] Web Analytics agregado.
+- [x] Web Analytics activado (configuración automática, 28 de octubre de 2026).
 - [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página.
 - [ ] Verificación en dos pasos activa en Cloudflare, Google y WhatsApp Business.

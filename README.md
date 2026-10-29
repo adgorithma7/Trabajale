@@ -16,6 +16,6 @@ python -m http.server 8787 --bind 127.0.0.1 --directory sitio
 
 Luego abrir http://localhost:8787/
 
-## Pendientes antes de publicar
+## Estado
 
-Buscar `PENDIENTE` en `sitio/index.html`: fragmento de Cloudflare Web Analytics (opcional, se puede agregar después de publicar).
+Publicada en https://trabajale.ai desde el 28 de octubre de 2026. Ver `docs/03-publicacion.md` para volver a publicar y para los pendientes.
