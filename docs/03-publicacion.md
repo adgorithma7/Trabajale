@@ -82,6 +82,8 @@ Recomendación: empezar por el camino A para salir rápido. Pasar al B cuando ha
 
 Los colores están definidos al inicio del archivo, en la parte que empieza con `:root`. Azul `#1F4FD8`, naranja `#FF7A29`.
 
+**Si se reemplaza una imagen o el video conservando el nombre** (por ejemplo una nueva `luca.webp`), hay que subir el número de versión en `index.html`: donde dice `luca.webp?v=2` poner `?v=3`, y así. Si no, los navegadores que ya visitaron la web siguen mostrando la imagen vieja hasta 7 días.
+
 ---
 
 ## 6. Métricas de visitas con Cloudflare Web Analytics
