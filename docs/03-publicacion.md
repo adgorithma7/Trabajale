@@ -1,6 +1,6 @@
 # Trabájale: cómo está hecha la web, dónde quedan los datos y cómo publicarla
 
-Actualizado: 28 de octubre de 2026.
+Actualizado: 5 de noviembre de 2026.
 
 ---
 
@@ -12,6 +12,9 @@ Todo lo que se publica está ahí. No hay base de datos ni servidor propio: es u
 |---|---|
 | `index.html` | La página completa: textos, estilos y enlaces. Es el único archivo que normalmente se edita. |
 | `404.html` | Página que se muestra si alguien entra a una dirección que no existe. |
+| `gracias.html` | Página `trabajale.ai/gracias`: a la que llega la persona desde el mensaje de confirmación del formulario. Dispara el evento CompleteRegistration del Pixel. No indexada. |
+| `privacidad.html` | Página `trabajale.ai/privacidad` con la política de privacidad. Enlazada desde el pie y desde el bloque de datos. |
+| `consent.js` | Aviso de cookies. Carga el Pixel de Meta solo si la persona pulsa Aceptar. Aquí está el ID del Pixel. |
 | `luca.webp` | Personaje Luca de la portada, con fondo transparente. |
 | `reel.mp4`, `poster.jpg` | Video vertical de 30 segundos y su imagen de portada. Formato H.264 + AAC, menos de 5 MB. |
 | `og.jpg` | Imagen de vista previa cuando se comparte el enlace en WhatsApp, Facebook, Instagram o Telegram. 1200 x 630 px. |
@@ -55,7 +58,7 @@ Hay dos caminos. Los dos son gratis y dan certificado HTTPS automático.
 1. Entra a tu panel de Cloudflare.
 2. Menú lateral: **Workers & Pages**, botón **Create**, pestaña **Pages**, opción **Upload assets**.
 3. Nombre del proyecto: `trabajale`. Clic en **Create project**.
-4. Arrastra **el contenido de la carpeta `sitio/`** (los 12 archivos, no la carpeta en sí) y clic en **Implementar sitio**.
+4. Elige la carpeta `sitio/` entera (15 archivos) y clic en **Implementar sitio**.
 5. Cloudflare te da una dirección temporal tipo `trabajale.pages.dev`. Ábrela en el celular y revisa que todo se vea bien.
 6. Para conectar el dominio: en el proyecto, pestaña **Dominios personalizados**, **Configurar un dominio personalizado**, escribe `trabajale.ai` y **Activar dominio**. Repite con `www.trabajale.ai`. Como el dominio está en el mismo Cloudflare, se configura solo en unos minutos.
 7. Redirección de `www` a `trabajale.ai` (el archivo `_redirects` de Pages no sirve para esto, se hace con una regla del dominio): menú **Dominios**, elegir `trabajale.ai`, **Reglas**, **Reglas de redireccionamiento**, **Crear regla**, plantilla **Redirect from WWW to Root**, **Implementar**. Comprobar abriendo `https://www.trabajale.ai`: debe terminar en `https://trabajale.ai`.
@@ -98,6 +101,20 @@ Si en el futuro se van a hacer anuncios en Facebook o Instagram, se agrega Meta 
 
 ---
 
+## 6b. Meta: verificación de dominio, Pixel, eventos y cookies
+
+Configurado el 5 de noviembre de 2026 a petición de Federico (anuncios en Facebook e Instagram).
+
+- **Verificación del dominio:** etiqueta `facebook-domain-verification` en el `<head>` de `index.html`.
+- **Pixel de Meta** (ID `1579254357561328`): está en `consent.js`, no pegado en las páginas. Solo se carga si la persona pulsa **Aceptar** en el aviso de cookies; la elección se guarda en su navegador (clave `trabajale-cookies`). Si rechaza, la web funciona igual y Meta no recibe nada.
+- **Eventos:** `Lead` al pulsar "Regístrate gratis", `Contact` al pulsar el botón de WhatsApp, `CompleteRegistration` al abrir `/gracias`. Si el Pixel no está cargado, los botones funcionan igual y no se envía nada.
+- **Página /gracias:** el formulario de Google no redirige solo; hay que poner en su mensaje de confirmación (Configuración, Presentación, Mensaje de confirmación): `¡Listo! Ya quedaste registrado. Toca aquí para ver qué sigue: https://trabajale.ai/gracias`. Meta contará solo a quienes pulsen; la hoja de cálculo es la cifra real.
+- **Política de privacidad:** `/privacidad`. Plazo de conservación 24 meses; respuesta a solicitudes en 15 días hábiles.
+- **Propiedad:** el código de verificación y el Pixel pertenecen a un Administrador comercial de Meta. Debe ser el de Trabájale, no el de un tercero. Pendiente de confirmar con Federico.
+- Para cambiar el ID del Pixel: editar la constante `ID` en `consent.js` y subir con `consent.js?v=2` en las tres páginas.
+
+---
+
 ## 7. Correo profesional hola@trabajale.ai (gratis)
 
 Cuando el dominio ya esté en Cloudflare:
@@ -121,5 +138,7 @@ Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmai
 - [x] Regla de redirección de www a trabajale.ai creada y comprobada (28 de octubre de 2026).
 - [ ] Vista previa probada: enviarse el enlace por WhatsApp a uno mismo y confirmar que sale la imagen azul con el título.
 - [x] Web Analytics activado (configuración automática, 28 de octubre de 2026).
-- [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página.
+- [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página y en /privacidad.
+- [ ] Mensaje de confirmación del formulario de Google con el enlace a /gracias.
+- [ ] Confirmado con Federico que el Pixel y la verificación están en el Administrador comercial de Trabájale.
 - [ ] Verificación en dos pasos activa en Cloudflare, Google y WhatsApp Business.
