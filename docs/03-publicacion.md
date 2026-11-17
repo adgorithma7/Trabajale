@@ -21,6 +21,7 @@ Todo lo que se publica está ahí. No hay base de datos ni servidor propio: es u
 | `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Ícono de la pestaña del navegador y de la pantalla de inicio del celular. |
 | `_headers` | Cabeceras de seguridad y de caché que Cloudflare Pages aplica automáticamente. |
 | `robots.txt`, `sitemap.xml` | Para que Google indexe la página correctamente. |
+| `.well-known/security.txt` | Contacto para quien encuentre un fallo de seguridad. Caduca el 17 de noviembre de 2027: actualizar la fecha antes. |
 
 La carpeta `docs/` tiene estos documentos de trabajo y no se publica.
 
@@ -141,4 +142,5 @@ Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmai
 - [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página y en /privacidad.
 - [ ] Mensaje de confirmación del formulario de Google con el enlace a /gracias.
 - [ ] Confirmado con Federico que el Pixel y la verificación están en el Administrador comercial de Trabájale.
-- [ ] Verificación en dos pasos activa en Cloudflare, Google y WhatsApp Business.
+- [ ] Verificación en dos pasos activa en Cloudflare, Google y WhatsApp Business. (Cloudflare la marcaba como pendiente el 17 de noviembre de 2026.)
+- [x] HSTS activado en Cloudflare (6 meses, subdominios incluidos) el 17 de noviembre de 2026.
