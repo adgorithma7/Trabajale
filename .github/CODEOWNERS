@@ -1,0 +1,3 @@
+# Revisor obligatorio de cualquier cambio en el repositorio.
+# Con la regla "Require review from Code Owners" activa, solo esta cuenta puede aprobar.
+*  @adgorithma7
