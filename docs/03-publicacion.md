@@ -148,5 +148,7 @@ Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmai
 - [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página y en /privacidad.
 - [ ] Mensaje de confirmación del formulario de Google con el enlace a /gracias.
 - [ ] Confirmado con Federico que el Pixel y la verificación están en el Administrador comercial de Trabájale.
+- [x] Repositorio en GitHub (adgorithma7/Trabajale), público, rama main protegida, Cloudflare Pages conectado (18 de noviembre de 2026).
+- [ ] Colaborador invitado el 18 de noviembre de 2026; pendiente de que acepte y de revisar su primera pull request.
 - [ ] Verificación en dos pasos activa en Cloudflare, Google y WhatsApp Business. (Cloudflare la marcaba como pendiente el 17 de noviembre de 2026.)
 - [x] HSTS activado en Cloudflare (6 meses, subdominios incluidos) el 17 de noviembre de 2026.
