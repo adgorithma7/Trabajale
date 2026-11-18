@@ -1,6 +1,6 @@
 # Trabájale: cómo está hecha la web, dónde quedan los datos y cómo publicarla
 
-Actualizado: 5 de noviembre de 2026.
+Actualizado: 18 de noviembre de 2026.
 
 ---
 
@@ -52,7 +52,13 @@ Y una recomendación: reducir las preguntas del formulario de Google. Hoy tiene 
 
 ## 4. Cómo publicar en Cloudflare Pages
 
-Hay dos caminos. Los dos son gratis y dan certificado HTTPS automático.
+**Desde el 18 de noviembre de 2026 la web se publica sola desde GitHub.** Repositorio: `github.com/adgorithma7/Trabajale` (privado, cuenta de Trabájale). Proyecto de Pages: `trabajale-web`, rama `main`, directorio de salida `sitio`. Cada cambio que llega a la rama `main` se publica en trabajale.ai en uno o dos minutos. Ya no hay que arrastrar carpetas.
+
+Para publicar un cambio: editar, guardar en Git (`git commit`) y enviar (`git push`). Si lo hace un colaborador, entra por solicitud de cambios (pull request) con vista previa automática, y se publica al aprobarla.
+
+El proyecto antiguo de carga manual, `trabajale`, ya no tiene el dominio y se puede eliminar.
+
+Los dos caminos de abajo quedan como referencia. Los dos son gratis y dan certificado HTTPS automático.
 
 ### Camino A: subir la carpeta a mano (más simple, sin GitHub)
 
@@ -74,7 +80,7 @@ Cada vez que haya un cambio en la web, se repite el paso 4 desde la pestaña **I
 4. **Save and Deploy**. A partir de ahí, cada vez que se suba un cambio al repositorio, Cloudflare publica la nueva versión sola en uno o dos minutos.
 5. El dominio y la redirección de www se configuran igual que en el camino A, pasos 6 y 7.
 
-Recomendación: empezar por el camino A para salir rápido. Pasar al B cuando haya cambios frecuentes.
+Se empezó por el camino A (28 de octubre de 2026) y se pasó al B el 18 de noviembre de 2026.
 
 ---
 

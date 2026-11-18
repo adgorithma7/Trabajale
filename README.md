@@ -18,4 +18,4 @@ Luego abrir http://localhost:8787/
 
 ## Estado
 
-Publicada en https://trabajale.ai desde el 28 de octubre de 2026. Ver `docs/03-publicacion.md` para volver a publicar y para los pendientes.
+Publicada en https://trabajale.ai desde el 28 de octubre de 2026. Desde el 18 de noviembre de 2026 se publica sola desde este repositorio (Cloudflare Pages, proyecto `trabajale-web`, rama `main`, carpeta `sitio`). Ver `docs/03-publicacion.md`.
