@@ -12,6 +12,7 @@ En esta rama la web se escribe en `landing/` (Next.js + React + Tailwind) y se c
 - Archivos que se copian tal cual (`consent.js`, `gracias.html`, `reel.mp4`, `_headers`, `.well-known/security.txt`, íconos): `landing/public/`.
 - Compilar y copiar a `sitio/`: `cd landing && npm install && npm run publicar`. Después `git add landing sitio`, `git commit` y `git push`.
 - `sitio/` se regenera entero en cada `npm run publicar`: no editar a mano lo que hay dentro.
+- Contacto: la web no publica correo ni Telegram. Todos los botones de contacto van al WhatsApp 0422-TRABAJA (+58 422 872 2252); los enlaces están en `landing/src/config/site.ts`.
 - El Pixel y el aviso de cookies siguen en `consent.js`; los eventos `Lead` (botones al formulario) y `Contact` (WhatsApp) se envían desde un pequeño script en `landing/src/app/layout.tsx`.
 
 La tabla de abajo describe la versión anterior en HTML puro (rama `main`).

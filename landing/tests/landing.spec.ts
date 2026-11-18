@@ -24,12 +24,14 @@ test.describe("Portada", () => {
     expect(errores, errores.join("\n")).toEqual([]);
   });
 
-  test("los medios principales apuntan al formulario y al canal de Telegram", async ({ page }) => {
+  test("los medios principales apuntan al formulario y al WhatsApp", async ({ page }) => {
     await abrirInicio(page);
     const formularios = page.locator(`a[href="${site.formulario}"]`);
-    const telegrams = page.locator(`a[href="${site.telegram}"]`);
+    const whatsapps = page.locator('a[href^="https://wa.me/584228722252"]');
     expect(await formularios.count()).toBeGreaterThanOrEqual(4);
-    expect(await telegrams.count()).toBeGreaterThanOrEqual(4);
+    expect(await whatsapps.count()).toBeGreaterThanOrEqual(4);
+    // Telegram ya no es un medio de contacto
+    await expect(page.locator('a[href*="t.me/"]')).toHaveCount(0);
     // Todos abren en pestaña nueva y sin filtrar el referer
     for (const a of await formularios.all()) {
       await expect(a).toHaveAttribute("target", "_blank");
@@ -60,9 +62,9 @@ test.describe("Portada", () => {
     await expect(page.getByRole("button", { name: /Cuéntanos tu experiencia/ })).toHaveAttribute("aria-current", "step");
     await page.getByRole("button", { name: /Guardar mi experiencia/ }).click();
     await expect(page.getByText("paso 3 / 4")).toBeVisible();
-    await page.getByRole("button", { name: /Ver el canal de vacantes/ }).click();
+    await page.getByRole("button", { name: /Ver vacantes por WhatsApp/ }).click();
     await expect(page.getByText("paso 4 / 4")).toBeVisible();
-    await expect(page.getByRole("link", { name: /Unirme al canal @trabajale/ }).first()).toHaveAttribute("href", site.telegram);
+    await expect(page.getByRole("link", { name: /Escribir al 0422-TRABAJA/ }).first()).toHaveAttribute("href", site.whatsappVacantes);
   });
 
   test("el recorrido de pasos cambia la vista previa al tocar un paso", async ({ page }) => {
@@ -72,7 +74,7 @@ test.describe("Portada", () => {
     await paso3.click();
     await expect(paso3).toHaveAttribute("aria-current", "step");
     await expect(page.getByText("paso 3 / 4")).toBeVisible();
-    await expect(page.getByText(/Luca · Trabájale/)).toBeVisible();
+    await expect(page.locator("#como-funciona").getByText(/Luca · Trabájale/)).toBeVisible();
   });
 
   test("las garantías despliegan su detalle al tocarlas", async ({ page }) => {
@@ -134,6 +136,17 @@ test.describe("Solo web general", () => {
   });
 });
 
+test.describe("Sin correo de contacto", () => {
+  for (const ruta of ["/", "/privacidad", "/gracias"]) {
+    test(`${ruta} no publica correo`, async ({ page }) => {
+      await page.goto(ruta);
+      await page.waitForLoadState("networkidle");
+      await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
+      expect(await page.content()).not.toContain("@gmail.com");
+    });
+  }
+});
+
 test.describe("Privacidad", () => {
   test("carga y enlaza de vuelta al inicio", async ({ page }) => {
     await page.goto("/privacidad");
@@ -166,7 +179,7 @@ test.describe("Header", () => {
       }
       // Los dos botones principales siempre visibles en escritorio
       await expect(fila.getByRole("link", { name: /Regístrate/ })).toBeVisible();
-      await expect(fila.getByRole("link", { name: /Telegram/ })).toBeVisible();
+      await expect(fila.locator(`a[href="${site.whatsappVacantes}"]`)).toBeVisible();
     });
   }
 });
@@ -195,7 +208,7 @@ test.describe("Componentes shadcn", () => {
     const panel = page.getByRole("dialog", { name: "Menú" });
     await expect(panel).toBeVisible();
     await expect(panel.getByRole("link", { name: /Regístrate gratis/ })).toHaveAttribute("href", site.formulario);
-    await expect(panel.getByText(/WhatsApp/)).toHaveCount(0);
+    await expect(panel.getByRole("link", { name: /Escríbenos por WhatsApp/ })).toHaveAttribute("href", site.whatsappVacantes);
     await panel.getByRole("link", { name: "Preguntas" }).click();
     await expect(panel).toBeHidden();
   });

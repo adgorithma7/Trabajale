@@ -4,7 +4,7 @@ import { VolverArriba } from "@/components/VolverArriba";
 import { Hero } from "@/components/Hero";
 import { Garantias } from "@/components/Garantias";
 import { ComoFunciona } from "@/components/ComoFunciona";
-import { Telegram } from "@/components/Telegram";
+import { WhatsApp } from "@/components/WhatsApp";
 import { Cultura } from "@/components/Cultura";
 import { Seguridad } from "@/components/Seguridad";
 import { Empresas } from "@/components/Empresas";
@@ -28,7 +28,7 @@ export default function Inicio() {
         <Hero />
         <Garantias />
         <ComoFunciona />
-        <Telegram />
+        <WhatsApp />
         <Cultura />
         <Seguridad />
         <Empresas />

@@ -1,7 +1,7 @@
 import { site } from "@/config/site";
 import { Boton } from "./Boton";
 import { Seccion, Titulo } from "./Seccion";
-import { IconoCorreo, IconoTelegram } from "./Iconos";
+import { IconoWhatsApp } from "./Iconos";
 
 const beneficios = [
   {
@@ -30,13 +30,9 @@ export function Empresas() {
             ¿Buscas gente para tu equipo?
           </Titulo>
           <div className="-mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Boton href={site.telegram} variante="telegram" evento="Contact">
-              <IconoTelegram className="text-telegram" />
-              Escribirnos por Telegram
-            </Boton>
-            <Boton href={`mailto:${site.email}`} variante="telegram" evento="Contact" externo={false} className="max-w-full">
-              <IconoCorreo />
-              {site.email}
+            <Boton href={site.whatsappEmpresas} variante="whatsapp" evento="Contact">
+              <IconoWhatsApp />
+              Escribirnos por WhatsApp
             </Boton>
           </div>
         </div>

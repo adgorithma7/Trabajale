@@ -7,6 +7,9 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Override default ignores of eslint-config-next.
   globalIgnores([
+    // Scripts estáticos copiados tal cual (consent.js) y la web compilada.
+    "public/**",
+    "out/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

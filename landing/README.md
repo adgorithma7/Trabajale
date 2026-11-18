@@ -2,7 +2,7 @@
 
 Rediseño de [trabajale.ai](https://trabajale.ai) como landing completa de bolsa de empleo.
 Mantiene la identidad actual (azul `#1F4FD8`, naranja `#FF7A29`, tinta `#14213D`, mascota Luca) con
-tres roles tipográficos: Outfit para titulares, Plus Jakarta Sans para texto y DM Mono para etiquetas, números y horas y pone como medios principales el **formulario de Google** y el **canal de Telegram**.
+tres roles tipográficos: Outfit para titulares, Plus Jakarta Sans para texto y DM Mono para etiquetas, números y horas y pone como medios principales el **formulario de Google** y el **WhatsApp 0422-TRABAJA**.
 
 Repositorios: el principal está en la organización **trabajale** (https://github.com/trabajale/trabajale-landing, privado) y hay una copia
 personal en https://github.com/galvysRodriguez/trabajale-landing. En la copia de trabajo local, `git push origin main` publica en los dos a la vez.
@@ -30,7 +30,7 @@ Motion para animación, y para el 3D: Three.js con React Three Fiber y Drei.
 
 | Qué | Archivo |
 |---|---|
-| Enlaces (formulario, Telegram, WhatsApp, correo), menú y **banner superior** | `src/config/site.ts` |
+| Enlaces (formulario y WhatsApp), menú y **banner superior** | `src/config/site.ts` |
 | Guía de marca (colores, tipografía, voz, reglas de interacción) | `BRAND.md` |
 | Tema (tokens de shadcn mapeados a la marca, claro y oscuro) | `src/app/globals.css`, bloque `:root` / `.dark` |
 | Componentes base shadcn/ui | `src/components/ui/*` (se añaden con `npx shadcn@latest add <componente>`) |
@@ -58,22 +58,22 @@ Motion para animación, y para el 3D: Three.js con React Three Fiber y Drei.
 
 0. **Banner superior** (cerrable, recuerda el cierre en el navegador; texto y enlace en `site.ts`).
 1. **Header** fijo que se compacta al hacer scroll, con barra de progreso de lectura, menú que marca la sección activa,
-   botón al canal de Telegram y botón al formulario. Enlace "Saltar al contenido" para teclado.
+   botón a WhatsApp y botón al formulario. Enlace "Saltar al contenido" para teclado.
 2. **Hero 3D**: fondo con piezas Three.js que siguen el cursor, y una "tarjeta de equipo" de Luca
    (foto de perfil, nombre, rol y su mensaje) con chips flotantes en capas de profundidad y parallax.
 3. **Nuestro compromiso**: cuatro garantías con el mismo tratamiento (numeral azul, línea naranja) que invierten el color
    al pasar el cursor y despliegan el detalle al tocarlas.
 4. **Cómo funciona**: recorrido interactivo de cuatro pasos. Cada paso muestra en un teléfono cómo se ve en la práctica
-   (formulario, resumen de experiencia, chat de WhatsApp con Luca, canal de Telegram); avanza solo, se pausa al pasar el cursor.
-5. **Canal de Telegram**: ventajas y un teléfono en perspectiva con publicaciones de ejemplo.
+   (formulario, resumen de experiencia, chat de WhatsApp con Luca, preguntar vacantes por WhatsApp); avanza solo, se pausa al pasar el cursor.
+5. **WhatsApp** (`WhatsApp.tsx`): ventajas y un teléfono en perspectiva con mensajes de ejemplo.
 6. **Nuestra cultura**: manifiesto del equipo ("en lo que creemos"), cuatro principios, "cómo trabajamos" en tres pasos,
-   tarjeta de Luca con cita, conversación típica por Telegram y el reel de 30 segundos.
+   tarjeta de Luca con cita, conversación típica por WhatsApp y el reel de 30 segundos.
 7. **Seguridad**: compromisos tomados de la política de privacidad y canales oficiales.
-8. **Para empresas**: contacto por Telegram y correo.
+8. **Para empresas**: contacto por WhatsApp.
 9. **Preguntas frecuentes** (acordeón sin JavaScript).
-10. **CTA final** con fondo 3D propio (icosaedro de alambre), formulario, canal de Telegram y botones para
-    **compartir** la página (Telegram, Web Share o copiar enlace).
-12. **Footer**, **barra inferior fija en celular** con formulario + canal, botón **volver arriba** y página **404** propia.
+10. **CTA final** con fondo 3D propio (icosaedro de alambre), formulario, WhatsApp y botones para
+    **compartir** la página (WhatsApp, Web Share o copiar enlace).
+12. **Footer**, **barra inferior fija en celular** con formulario + WhatsApp, botón **volver arriba** y página **404** propia.
 
 ## Piezas gráficas (canvas-design)
 
@@ -102,8 +102,9 @@ Todas muestran un borde degradado azul→naranja al pasar el cursor. Los botones
 
 ## Canales
 
-Todos los botones de contacto llevan al **canal de Telegram** (`site.telegram`) o al correo. El WhatsApp 0422-TRABAJA
-solo se menciona en la política de privacidad; sus datos siguen en `site.ts` por si hace falta volver a mostrarlo.
+Todos los botones de contacto llevan al **WhatsApp 0422-TRABAJA** con un mensaje ya escrito: `site.whatsappVacantes`
+(personas que buscan empleo), `site.whatsapp` (registro) y `site.whatsappEmpresas` (empresas). La web no publica correo
+ni Telegram; las pruebas fallan si vuelve a aparecer un `mailto:` o un enlace a `t.me/`.
 
 ## Versión de diciembre (temporada)
 
@@ -113,7 +114,7 @@ Todo está en `src/config/temporada.ts`. La temporada entra por el mensaje y el 
 | Elemento | Texto |
 |---|---|
 | Banner, etiqueta | Diciembre |
-| Banner, texto | Las empresas están sumando personal para la temporada. Publicamos las vacantes nuevas primero en el canal. |
+| Banner, texto | Las empresas están sumando personal para la temporada. Pregúntanos por WhatsApp qué vacantes hay abiertas. |
 | Titular | Empleos remotos o presenciales, **para empezar en diciembre** |
 | Subtítulo | Regístrate gratis, cuéntanos qué sabes hacer y te avisamos cuando haya una oportunidad en Venezuela que encaje contigo. |
 | Chip superior | Bolsa de empleo gratuita para Venezuela |
@@ -125,7 +126,7 @@ apagarla (`activa: false`) y redesplegar. Una web con adornos en febrero comunic
 
 **Solo web general**: la página `/cucuta` se retiró (2026-11-17); la web atiende al público general de Venezuela.
 
-**Vacantes fuera de la portada**: en esta versión no se muestran trabajos en la web; las vacantes van por el canal de Telegram. Los componentes `Empleos.tsx`, `VacantesLista.tsx` y `src/data/vacantes.ts` siguen en el repo sin usar, para retomarlos cuando se defina esa sección.
+**Vacantes fuera de la portada**: en esta versión no se muestran trabajos en la web; las vacantes se cuentan por WhatsApp. Los componentes `Empleos.tsx`, `VacantesLista.tsx` y `src/data/vacantes.ts` siguen en el repo sin usar, para retomarlos cuando se defina esa sección.
 
 ## Pendientes antes de publicar
 
@@ -135,9 +136,8 @@ apagarla (`activa: false`) y redesplegar. Una web con adornos en febrero comunic
 - **3D**: el fondo Three.js pesa unos 200 KB extra de JavaScript y solo se carga en escritorio con WebGL;
   en celular y con `prefers-reduced-motion` se muestra la misma escena sin él. Si se quiere quitar,
   basta borrar `<Fondo3DCarga />` de `Hero.tsx`.
-- **Aviso de cookies y Pixel de Meta**: la web actual los carga con `consent.js`; aquí no se incluyó.
-  Los botones llevan `data-evento="Lead" | "Canal" | "Contact"` para engancharles la medición.
-- **Canal de Telegram**: se usa `https://t.me/trabajale`. Confirmar que ese es el canal oficial; si no, cambiarlo en `src/config/site.ts`.
+- **Aviso de cookies y Pixel de Meta**: `public/consent.js` (igual que en la web anterior), cargado desde `layout.tsx`.
+  Los botones llevan `data-evento="Lead" | "Contact"` y un script del layout lo envía al Pixel si la persona aceptó.
 
 ## Despliegue
 

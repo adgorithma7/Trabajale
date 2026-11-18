@@ -29,7 +29,7 @@ a cada lado. Tamaño mínimo del isotipo: 24 px. No se recolorea, no se gira, no
 | `tinta` | `#14213D` | Texto principal. Fondo de las tarjetas al invertirse. |
 | `gris` | `#5A6580` | Texto secundario. |
 | `verde` | `#1FA855` | Solo WhatsApp y estado "en línea". |
-| `telegram` | `#2AABEE` | Solo el icono de Telegram. |
+| `telegram` | `#2AABEE` | Sin uso (Telegram ya no aparece en la web). |
 
 Regla: azul manda, naranja señala, verde y celeste identifican canales. Sin otros colores.
 
@@ -63,7 +63,7 @@ Tamaños: texto base 16 px / 1.5; h2 de sección 32–42 px; h3 de tarjeta 18–
 - Cercana y directa, de tú. Frases cortas. Sin letra pequeña.
 - Siempre decimos lo que **no** hacemos: no cobramos, no pedimos documentos, no garantizamos empleo.
 - Luca habla en primera persona y con honestidad ("Prefiero decirte que todavía no hay nada…").
-- Botones con verbo: "Regístrate gratis", "Unirme al canal", "Reportar por WhatsApp".
+- Botones con verbo: "Regístrate gratis", "Escribir por WhatsApp", "Preguntar por WhatsApp".
 
 ## Componentes
 
@@ -76,15 +76,14 @@ así cualquier componente nuevo que se añada con `npx shadcn@latest add` sale y
 
 Mismo sistema que la web: fondo "malla" azul noche con retícula, logo blanco arriba a la izquierda, chip mono en
 mayúsculas, titular Outfit con la frase clave en degradado naranja, Luca a la derecha o al centro, botón naranja
-con la URL y pie mono con dominio, Telegram y WhatsApp. Plantillas en `src/app/piezas/[pieza]/page.tsx`.
+con la URL y pie mono con dominio y WhatsApp. Plantillas en `src/app/piezas/[pieza]/page.tsx`.
 
 ## Medios y prioridades
 
 1. Formulario de Google (acción principal, siempre naranja).
-2. Canal de Telegram @trabajale (acción secundaria, siempre visible junto a la principal; también es el canal de contacto,
-   de reporte y por el que Luca escribe).
-3. Correo trabajale.ai@gmail.com (empresas y derechos sobre datos).
-WhatsApp no aparece en la web salvo en la política de privacidad.
+2. WhatsApp 0422-TRABAJA (+58 422 872 2252): acción secundaria, siempre visible junto a la principal. Es el canal de
+   contacto, de vacantes, de empresas y de reporte, y por el que Luca escribe.
+La web no publica correo ni Telegram.
 
 ## Voz de la empresa en una frase
 

@@ -19,7 +19,7 @@ export const preguntas = [
   },
   {
     p: "¿Cómo me van a contactar?",
-    r: `Por Telegram o por correo, únicamente para hablar de oportunidades o de tu registro. Las vacantes nuevas se publican primero en nuestro canal (${site.telegramUsuario}), así que puedes revisarlas cuando quieras.`,
+    r: `Por WhatsApp, desde el ${site.whatsappTexto} (${site.whatsappNumero}), únicamente para hablar de oportunidades o de tu registro. Si quieres saber qué vacantes hay abiertas, escríbenos cuando quieras.`,
   },
   {
     p: "¿Dónde quedan guardados mis datos?",
@@ -35,6 +35,6 @@ export const preguntas = [
   },
   {
     p: "¿Cómo sé que Trabájale no es una estafa?",
-    r: `Tres señales: nunca pedimos dinero, nunca pedimos documentos ni cuentas bancarias, y siempre escribimos desde el canal de Telegram ${site.telegramUsuario} o desde ${site.email}. Si te escriben desde otro lado pidiendo algo de eso, no somos nosotros.`,
+    r: `Tres señales: nunca pedimos dinero, nunca pedimos documentos ni cuentas bancarias, y siempre escribimos desde el WhatsApp ${site.whatsappTexto} (${site.whatsappNumero}). Si te escriben desde otro lado pidiendo algo de eso, no somos nosotros.`,
   },
 ];

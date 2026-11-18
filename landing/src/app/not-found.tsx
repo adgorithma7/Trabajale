@@ -2,7 +2,7 @@ import Link from "next/link";
 import { site } from "@/config/site";
 import { Marca } from "@/components/Logo";
 import { Boton } from "@/components/Boton";
-import { IconoTelegram } from "@/components/Iconos";
+import { IconoWhatsApp } from "@/components/Iconos";
 
 export default function NoEncontrada() {
   return (
@@ -23,9 +23,9 @@ export default function NoEncontrada() {
           >
             Volver al inicio
           </Link>
-          <Boton href={site.telegram} variante="blanco" evento="Canal">
-            <IconoTelegram className="text-telegram" />
-            Ver vacantes en Telegram
+          <Boton href={site.whatsappVacantes} variante="blanco" evento="Contact">
+            <IconoWhatsApp className="text-verde" />
+            Preguntar por WhatsApp
           </Boton>
         </div>
       </div>

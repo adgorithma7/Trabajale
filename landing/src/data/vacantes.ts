@@ -1,6 +1,6 @@
 /**
  * Vacantes que se muestran en la landing.
- * Las reales se publican primero en el canal de Telegram; aquí van las destacadas.
+ * Las reales se cuentan por WhatsApp (0422-TRABAJA); aquí van las destacadas.
  * `ejemplo: true` muestra una etiqueta "Ejemplo": quítala cuando cargues vacantes reales.
  */
 export type Modalidad = "Remoto" | "Presencial" | "Híbrido";

@@ -2,7 +2,7 @@ import { site } from "@/config/site";
 import { Boton } from "./Boton";
 import { Seccion, Titulo } from "./Seccion";
 import { Pasos } from "./Pasos";
-import { IconoTelegram } from "./Iconos";
+import { IconoWhatsApp } from "./Iconos";
 
 export function ComoFunciona() {
   return (
@@ -20,9 +20,9 @@ export function ComoFunciona() {
         <Boton href={site.formulario} evento="Lead">
           Empezar mi registro
         </Boton>
-        <Boton href={site.telegram} variante="telegram" evento="Canal">
-          <IconoTelegram className="text-telegram" />
-          Unirme al canal
+        <Boton href={site.whatsappVacantes} variante="whatsapp" evento="Contact">
+          <IconoWhatsApp />
+          Escribirnos por WhatsApp
         </Boton>
       </div>
     </Seccion>

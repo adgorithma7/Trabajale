@@ -80,9 +80,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         {/* Aviso de cookies y Pixel de Meta: solo carga el Pixel si la persona acepta. Ver public/consent.js */}
         <Script src="/consent.js?v=1" strategy="afterInteractive" />
-        {/* Eventos del Pixel: Lead al ir al formulario, Contact al ir a WhatsApp. Sin Pixel no hace nada. */}
+        {/* Eventos del Pixel: usa data-evento del enlace (Lead, Contact); si no lo tiene, lo deduce del destino. Sin Pixel no hace nada. */}
         <Script id="eventos-pixel" strategy="afterInteractive">
-          {`document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||typeof window.tev!=="function")return;var h=a.href;if(/forms\\.gle|docs\\.google\\.com\\/forms/.test(h))window.tev("Lead");else if(/wa\\.me\\//.test(h))window.tev("Contact");});`}
+          {`document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||typeof window.tev!=="function")return;var ev=a.getAttribute("data-evento"),h=a.href;if(!ev){if(/forms\\.gle|docs\\.google\\.com\\/forms/.test(h))ev="Lead";else if(/wa\\.me\\//.test(h))ev="Contact";}if(ev)window.tev(ev);});`}
         </Script>
       </body>
     </html>

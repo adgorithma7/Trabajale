@@ -1,5 +1,5 @@
 import { site } from "@/config/site";
-import { IconoTelegram } from "./Iconos";
+import { IconoWhatsApp } from "./Iconos";
 
 /** Barra inferior fija en celular con los dos medios principales. */
 export function BarraFija() {
@@ -16,14 +16,14 @@ export function BarraFija() {
           Regístrate gratis
         </a>
         <a
-          href={site.telegram}
+          href={site.whatsappVacantes}
           target="_blank"
           rel="noopener"
-          data-evento="Canal"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-boton border-2 border-azul bg-white px-3 font-extrabold text-azul"
+          data-evento="Contact"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-boton border-2 border-verde bg-white px-3 font-extrabold text-verde-oscuro"
         >
-          <IconoTelegram size={20} className="text-telegram" />
-          Canal
+          <IconoWhatsApp size={20} className="text-verde" />
+          WhatsApp
         </a>
       </div>
     </div>

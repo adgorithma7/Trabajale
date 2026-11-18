@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { nav, site } from "@/config/site";
 import { Marca } from "./Logo";
-import { IconoCorreo, IconoTelegram } from "./Iconos";
+import { IconoWhatsApp } from "./Iconos";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <Marca claro />
           <p className="mt-4 max-w-sm text-white/75">
-            Bolsa de empleo gratuita para Venezuela. Te registras una vez y te avisamos por Telegram cuando haya una
+            Bolsa de empleo gratuita para Venezuela. Te registras una vez y te avisamos por WhatsApp cuando haya una
             oportunidad, remota o presencial, que encaje con tu perfil.
           </p>
           <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-white/50">gratis · sin documentos · mayores de 18</p>
@@ -38,20 +38,14 @@ export function Footer() {
           <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-white/60">Contacto</p>
           <ul className="mt-3 flex flex-col gap-3">
             <li>
-              <a href={site.telegram} target="_blank" rel="noopener" className="flex items-center gap-2 font-semibold text-white/85 hover:text-white">
-                <IconoTelegram size={20} className="text-telegram" />
-                Telegram {site.telegramUsuario}
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${site.email}`} className="flex items-center gap-2 font-semibold text-white/85 hover:text-white">
-                <IconoCorreo size={20} />
-                {site.email}
+              <a href={site.whatsapp} target="_blank" rel="noopener" data-evento="Contact" className="flex items-center gap-2 font-semibold text-white/85 hover:text-white">
+                <IconoWhatsApp size={20} className="text-[#25d366]" />
+                WhatsApp {site.whatsappTexto}
               </a>
             </li>
           </ul>
           <p className="mt-4 max-w-[28ch] text-[13px] text-white/60">
-            Solo escribimos desde el canal {site.telegramUsuario} o desde este correo. Si te escriben desde otro lado en nuestro nombre, no somos nosotros.
+            Solo escribimos desde el WhatsApp {site.whatsappNumero}. Si te escriben desde otro lado en nuestro nombre, no somos nosotros.
           </p>
         </div>
       </div>

@@ -29,7 +29,7 @@ const garantias: Garantia[] = [
   {
     etiqueta: "contacto",
     titulo: "Te avisamos nosotros",
-    corto: "Cuando hay una vacante para tu perfil, Luca te escribe por Telegram.",
+    corto: "Cuando hay una vacante para tu perfil, Luca te escribe por WhatsApp.",
     detalle:
       "Publicamos cada vacante en el canal @trabajale y, si tu perfil encaja, te escribimos directamente. Si no hay nada para ti todavía, no te llenamos de mensajes.",
   },

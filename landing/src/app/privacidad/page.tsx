@@ -11,19 +11,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacidad" },
 };
 
-const Correo = () => (
-  <a href={`mailto:${site.email}`} className="font-bold text-azul hover:underline">
-    {site.email}
-  </a>
-);
-
 const secciones: { titulo: string; contenido: React.ReactNode }[] = [
   {
     titulo: "Quién es responsable de tus datos.",
     contenido: (
       <>
         Trabájale, a través del sitio {site.dominio}. Para cualquier asunto sobre tus datos
-        escríbenos a <Correo /> o por WhatsApp al {site.whatsappTexto} ({site.whatsappNumero}).
+        escríbenos por WhatsApp al {site.whatsappTexto} ({site.whatsappNumero}).
       </>
     ),
   },
@@ -55,12 +49,12 @@ const secciones: { titulo: string; contenido: React.ReactNode }[] = [
   {
     titulo: "Con quién se comparten.",
     contenido:
-      "Con nadie fuera de Trabájale, con una sola excepción: la empresa que ofrezca una oportunidad concreta, y únicamente después de que tú nos digas que te interesa. Nunca entregamos tu perfil a una empresa sin hablar contigo primero. Nuestros proveedores (Google, Cloudflare, Meta, Telegram y WhatsApp) procesan datos técnicos para prestar su servicio, según sus propias políticas.",
+      "Con nadie fuera de Trabájale, con una sola excepción: la empresa que ofrezca una oportunidad concreta, y únicamente después de que tú nos digas que te interesa. Nunca entregamos tu perfil a una empresa sin hablar contigo primero. Nuestros proveedores (Google, Cloudflare, Meta y WhatsApp) procesan datos técnicos para prestar su servicio, según sus propias políticas.",
   },
   {
     titulo: "Cómo te contactamos.",
     contenido:
-      "Por WhatsApp o por correo, únicamente para hablar de oportunidades o de tu registro. Las conversaciones por WhatsApp están cifradas de extremo a extremo; WhatsApp, que pertenece a Meta, trata los datos de la conexión según su política de privacidad. Seguir nuestro canal de Telegram es voluntario y no requiere registrarte.",
+      "Por WhatsApp, únicamente para hablar de oportunidades o de tu registro. Las conversaciones por WhatsApp están cifradas de extremo a extremo; WhatsApp, que pertenece a Meta, trata los datos de la conexión según su política de privacidad.",
   },
   {
     titulo: "Cookies y medición en la web.",
@@ -97,7 +91,7 @@ const secciones: { titulo: string; contenido: React.ReactNode }[] = [
     contenido: (
       <>
         Puedes pedirnos, en cualquier momento y sin costo: saber qué datos tenemos tuyos,
-        corregirlos, borrarlos, u oponerte a que los usemos. Escríbenos a <Correo /> o al WhatsApp
+        corregirlos, borrarlos, u oponerte a que los usemos. Escríbenos por WhatsApp al {site.whatsappTexto}
         indicando tu nombre y el número con que te registraste. Respondemos en un máximo de 15 días
         hábiles. Este derecho está reconocido en los artículos 28 y 60 de la Constitución, y si no
         respondiéramos puedes acudir a los tribunales mediante habeas data.

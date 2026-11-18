@@ -53,7 +53,7 @@ export function Seguridad() {
 
       <div className="tarjeta mt-8 flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <p className="text-tinta">
-          <span className="font-bold">Canales oficiales:</span> el canal de Telegram {site.telegramUsuario} y el correo {site.email}.
+          <span className="font-bold">Canal oficial:</span> el WhatsApp {site.whatsappTexto} ({site.whatsappNumero}).
           Si alguien te escribe desde otro lado en nombre de Trabájale, no somos nosotros.
         </p>
         <Link href="/privacidad" className="flex-none font-bold text-azul decoration-naranja decoration-2 underline-offset-4 hover:underline">

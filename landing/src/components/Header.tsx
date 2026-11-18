@@ -5,7 +5,7 @@ import { motion, useScroll, useSpring } from "motion/react";
 import { nav, site } from "@/config/site";
 import { Marca } from "./Logo";
 import { Boton } from "./Boton";
-import { IconoMenu, IconoTelegram } from "./Iconos";
+import { IconoMenu, IconoWhatsApp } from "./Iconos";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 /**
@@ -82,9 +82,9 @@ export function Header() {
         </nav>
 
         <div className="ml-auto hidden flex-none items-center gap-2 md:flex">
-          <Boton href={site.telegram} variante="telegram" tamano="md" evento="Canal" className="px-3 lg:px-4">
-            <IconoTelegram size={18} />
-            <span className="hidden xl:inline">Canal de </span>Telegram
+          <Boton href={site.whatsappVacantes} variante="whatsapp" tamano="md" evento="Contact" className="px-3 lg:px-4">
+            <IconoWhatsApp size={18} />
+            <span className="hidden xl:inline">Escríbenos por </span>WhatsApp
           </Boton>
           <Boton href={site.formulario} tamano="md" evento="Lead" className="px-3 lg:px-4">
             Regístrate<span className="hidden xl:inline"> gratis</span>
@@ -123,9 +123,9 @@ export function Header() {
               <Boton href={site.formulario} evento="Lead">
                 Regístrate gratis
               </Boton>
-              <Boton href={site.telegram} variante="telegram" evento="Canal">
-                <IconoTelegram />
-                Canal de Telegram
+              <Boton href={site.whatsappVacantes} variante="whatsapp" evento="Contact">
+                <IconoWhatsApp />
+                Escríbenos por WhatsApp
               </Boton>
               <p className="mt-2 text-center font-mono text-[11px] text-gris">gratis · sin documentos · 18+</p>
             </div>

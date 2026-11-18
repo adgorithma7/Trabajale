@@ -9,7 +9,7 @@ export function Preguntas() {
       <div className="grid gap-10 md:grid-cols-[1fr_1.6fr]">
         <Titulo
           eyebrow="Preguntas frecuentes"
-          descripcion="Si tu duda no está aquí, escríbenos en el canal de Telegram y te respondemos."
+          descripcion="Si tu duda no está aquí, escríbenos por WhatsApp y te respondemos."
         >
           Lo que más nos preguntan
         </Titulo>

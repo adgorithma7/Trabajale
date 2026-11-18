@@ -4,7 +4,7 @@ import { Boton } from "./Boton";
 import { Revelar } from "./Revelar";
 import { Compartir } from "./Compartir";
 import { Fondo3DCarga } from "./Fondo3DCarga";
-import { IconoTelegram } from "./Iconos";
+import { IconoWhatsApp } from "./Iconos";
 
 export function CtaFinal() {
   return (
@@ -24,9 +24,9 @@ export function CtaFinal() {
                 <Boton href={site.formulario} evento="Lead" className="sm:min-w-52">
                   Regístrate gratis
                 </Boton>
-                <Boton href={site.telegram} variante="blanco" evento="Canal" className="sm:min-w-52">
-                  <IconoTelegram className="text-telegram" />
-                  Unirme al canal {site.telegramUsuario}
+                <Boton href={site.whatsappVacantes} variante="blanco" evento="Contact" className="sm:min-w-52">
+                  <IconoWhatsApp className="text-verde" />
+                  Escribir al {site.whatsappTexto}
                 </Boton>
               </div>
               <p className="mt-6 text-sm text-white/70">Mayores de 18 años. Trabájale no cobra a quienes se registran.</p>

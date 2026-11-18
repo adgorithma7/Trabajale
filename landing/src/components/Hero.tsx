@@ -7,7 +7,7 @@ import { hero as textosHero } from "@/config/temporada";
 import { Boton } from "./Boton";
 import { Escena } from "./Escena";
 import { Fondo3DCarga } from "./Fondo3DCarga";
-import { IconoCampana, IconoCheck, IconoEscudo, IconoSinDinero, IconoTelegram } from "./Iconos";
+import { IconoCampana, IconoCheck, IconoEscudo, IconoSinDinero, IconoWhatsApp } from "./Iconos";
 
 interface Props {
   chip?: string;
@@ -66,9 +66,9 @@ export function Hero({
             <Boton href={site.formulario} evento="Lead" className="sm:min-w-56">
               Regístrate gratis
             </Boton>
-            <Boton href={site.telegram} variante="vidrio" evento="Canal" className="sm:min-w-56">
-              <IconoTelegram className="text-[#7cd0ff]" />
-              Ver vacantes en Telegram
+            <Boton href={site.whatsappVacantes} variante="vidrio" evento="Contact" className="sm:min-w-56">
+              <IconoWhatsApp className="text-[#25d366]" />
+              Escríbenos por WhatsApp
             </Boton>
           </motion.div>
 
@@ -76,7 +76,7 @@ export function Hero({
             variants={item}
             className="mt-8 flex flex-col gap-2 text-[15px] font-medium text-white/80 sm:flex-row sm:flex-wrap sm:gap-x-6"
           >
-            {["Gratis, siempre", "Sin documentos", "Te avisamos por Telegram"].map((t) => (
+            {["Gratis, siempre", "Sin documentos", "Te avisamos por WhatsApp"].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <IconoCheck size={16} className="text-naranja" />
                 {t}

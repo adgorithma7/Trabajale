@@ -3,7 +3,7 @@ import { site } from "@/config/site";
 import { Seccion, Titulo, Eyebrow } from "./Seccion";
 import { Tilt } from "./Tilt";
 import { Revelar } from "./Revelar";
-import { IconoCampana, IconoCandado, IconoCheck, IconoEscudo, IconoTelegram } from "./Iconos";
+import { IconoCampana, IconoCandado, IconoCheck, IconoEscudo, IconoWhatsApp } from "./Iconos";
 
 /**
  * Reel vertical de 30 s (3,5 MB), servido desde este mismo sitio: public/reel.mp4.
@@ -152,8 +152,8 @@ export function Cultura() {
               <div className="flex items-center justify-between gap-3">
                 <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-gris">Una conversación típica</p>
                 <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-gris">
-                  <IconoTelegram size={14} className="text-telegram" />
-                  {site.telegramUsuario}
+                  <IconoWhatsApp size={14} className="text-verde" />
+                  {site.whatsappTexto}
                 </span>
               </div>
               <ol className="mt-4 flex flex-col gap-3">

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { site } from "@/config/site";
-import { IconoTelegram } from "./Iconos";
+import { IconoWhatsApp } from "./Iconos";
 
-const MENSAJE = `${site.nombre} es una bolsa de empleo gratuita para Venezuela: te registras una vez y te avisan por Telegram cuando hay una vacante para tu perfil.`;
+const MENSAJE = `${site.nombre} es una bolsa de empleo gratuita para Venezuela: te registras una vez y te avisan por WhatsApp cuando hay una vacante para tu perfil.`;
 
-/** Compartir la página: Telegram, Web Share si existe, y copiar enlace. */
+/** Compartir la página: WhatsApp, Web Share si existe, y copiar enlace. */
 export function Compartir({ claro = false }: { claro?: boolean }) {
   const [copiado, setCopiado] = useState(false);
   const base = `inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-boton border-2 px-4 font-bold transition-colors ${
@@ -38,13 +38,13 @@ export function Compartir({ claro = false }: { claro?: boolean }) {
   return (
     <div className="flex flex-wrap gap-2.5">
       <a
-        href={`https://t.me/share/url?url=${encodeURIComponent(site.url)}&text=${encodeURIComponent(MENSAJE)}`}
+        href={`https://wa.me/?text=${encodeURIComponent(`${MENSAJE} ${site.url}`)}`}
         target="_blank"
         rel="noopener"
         className={base}
       >
-        <IconoTelegram size={18} className={claro ? "text-[#7cd0ff]" : "text-telegram"} />
-        Enviar por Telegram
+        <IconoWhatsApp size={18} className={claro ? "text-[#25d366]" : "text-verde"} />
+        Enviar por WhatsApp
       </a>
       <button type="button" onClick={compartirNativo} className={base} aria-live="polite">
         {copiado ? "Enlace copiado" : "Compartir enlace"}
