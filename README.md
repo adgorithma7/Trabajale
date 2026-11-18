@@ -5,7 +5,7 @@ Página de registro para personas en Venezuela que buscan empleo remoto o presen
 ## Carpetas
 
 - `sitio/`: lo que se publica en Cloudflare Pages. Ver `docs/03-publicacion.md`.
-- `docs/`: documentos de trabajo (comparativa de dominio, plan de registro, guía de publicación, guía de WhatsApp Business).
+- `docs/`: documentos de trabajo (comparativa de dominio, plan de registro, guía de publicación, guía de WhatsApp Business, guía para colaboradores).
 - `recursos/`: imágenes para redes y perfiles (no se publican en la web).
 
 ## Ver la página en local

@@ -52,7 +52,7 @@ Y una recomendación: reducir las preguntas del formulario de Google. Hoy tiene 
 
 ## 4. Cómo publicar en Cloudflare Pages
 
-**Desde el 18 de noviembre de 2026 la web se publica sola desde GitHub.** Repositorio: `github.com/adgorithma7/Trabajale` (privado, cuenta de Trabájale). Proyecto de Pages: `trabajale-web`, rama `main`, directorio de salida `sitio`. Cada cambio que llega a la rama `main` se publica en trabajale.ai en uno o dos minutos. Ya no hay que arrastrar carpetas.
+**Desde el 18 de noviembre de 2026 la web se publica sola desde GitHub.** Repositorio: `github.com/adgorithma7/Trabajale` (público, cuenta de Trabájale, rama `main` protegida: los colaboradores entran por pull request; ver `docs/05-colaboradores.md`). Proyecto de Pages: `trabajale-web`, rama `main`, directorio de salida `sitio`. Cada cambio que llega a la rama `main` se publica en trabajale.ai en uno o dos minutos. Ya no hay que arrastrar carpetas.
 
 Para publicar un cambio: editar, guardar en Git (`git commit`) y enviar (`git push`). Si lo hace un colaborador, entra por solicitud de cambios (pull request) con vista previa automática, y se publica al aprobarla.
 
