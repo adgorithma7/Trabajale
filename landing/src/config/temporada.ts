@@ -11,9 +11,9 @@ export const temporada = {
   hasta: "2027-01-07",
   banner: {
     etiqueta: "Diciembre",
-    texto: "Las empresas están sumando personal para la temporada. Pregúntanos por WhatsApp qué vacantes hay abiertas.",
-    enlaceTexto: "Preguntar por WhatsApp",
-    version: "2026-12-temporada-whatsapp",
+    texto: "Las empresas están sumando personal para la temporada. Publicamos las vacantes nuevas en el canal de Telegram.",
+    enlaceTexto: "Seguir el canal",
+    version: "2026-12-temporada-canal",
   },
   hero: {
     chip: "Bolsa de empleo gratuita para Venezuela",
@@ -28,9 +28,9 @@ export const temporada = {
 export const textosBase = {
   banner: {
     etiqueta: "Esta semana",
-    texto: "Vacantes nuevas de atención al cliente y ventas, remotas desde toda Venezuela. Pregúntalas por WhatsApp.",
-    enlaceTexto: "Preguntar por WhatsApp",
-    version: "2026-11-18-whatsapp",
+    texto: "Vacantes nuevas de atención al cliente y ventas, remotas desde toda Venezuela. Las publicamos en el canal de Telegram.",
+    enlaceTexto: "Seguir el canal",
+    version: "2026-11-18-canal",
   },
   hero: {
     chip: "Bolsa de empleo gratuita para Venezuela",

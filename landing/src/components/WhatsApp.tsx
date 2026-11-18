@@ -3,7 +3,7 @@ import { site } from "@/config/site";
 import { Boton } from "./Boton";
 import { Tilt } from "./Tilt";
 import { Revelar } from "./Revelar";
-import { IconoCheck, IconoWhatsApp } from "./Iconos";
+import { IconoCheck, IconoTelegram, IconoWhatsApp } from "./Iconos";
 
 const ventajas = [
   "Te contamos las vacantes abiertas que encajan contigo",
@@ -47,6 +47,18 @@ export function WhatsApp() {
               Regístrate gratis
             </Boton>
           </div>
+          <a
+            href={site.telegram}
+            target="_blank"
+            rel="noopener"
+            className="mt-6 flex max-w-xl items-center gap-3 rounded-2xl border border-white/20 bg-white/5 px-4 py-3 transition-colors hover:bg-white hover:text-tinta"
+          >
+            <IconoTelegram size={28} className="flex-none text-telegram" />
+            <span className="text-[15px] leading-snug">
+              <span className="font-bold">Para mantenerte informado, sigue el canal {site.telegramUsuario} en Telegram.</span>{" "}
+              Ahí publicamos cada vacante nueva y los avisos de cierre. Es gratis y puedes salir cuando quieras.
+            </span>
+          </a>
         </div>
 
         {/* Teléfono en perspectiva con una conversación de ejemplo */}

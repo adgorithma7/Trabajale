@@ -4,7 +4,7 @@ import { Boton } from "./Boton";
 import { Revelar } from "./Revelar";
 import { Compartir } from "./Compartir";
 import { Fondo3DCarga } from "./Fondo3DCarga";
-import { IconoWhatsApp } from "./Iconos";
+import { IconoTelegram, IconoWhatsApp } from "./Iconos";
 
 export function CtaFinal() {
   return (
@@ -27,6 +27,10 @@ export function CtaFinal() {
                 <Boton href={site.whatsappVacantes} variante="blanco" evento="Contact" className="sm:min-w-52">
                   <IconoWhatsApp className="text-verde" />
                   Escribir al {site.whatsappTexto}
+                </Boton>
+                <Boton href={site.telegram} variante="azul-borde" className="sm:min-w-52">
+                  <IconoTelegram className="text-[#7cd0ff]" />
+                  Seguir el canal {site.telegramUsuario}
                 </Boton>
               </div>
               <p className="mt-6 text-sm text-white/70">Mayores de 18 años. Trabájale no cobra a quienes se registran.</p>

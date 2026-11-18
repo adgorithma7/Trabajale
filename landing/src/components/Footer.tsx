@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { nav, site } from "@/config/site";
 import { Marca } from "./Logo";
-import { IconoWhatsApp } from "./Iconos";
+import { IconoTelegram, IconoWhatsApp } from "./Iconos";
 
 export function Footer() {
   return (
@@ -43,9 +43,15 @@ export function Footer() {
                 WhatsApp {site.whatsappTexto}
               </a>
             </li>
+            <li>
+              <a href={site.telegram} target="_blank" rel="noopener" className="flex items-center gap-2 font-semibold text-white/85 hover:text-white">
+                <IconoTelegram size={20} className="text-telegram" />
+                Canal de Telegram {site.telegramUsuario}
+              </a>
+            </li>
           </ul>
           <p className="mt-4 max-w-[28ch] text-[13px] text-white/60">
-            Solo escribimos desde el WhatsApp {site.whatsappNumero}. Si te escriben desde otro lado en nuestro nombre, no somos nosotros.
+            Solo escribimos desde el WhatsApp {site.whatsappNumero}; en el canal {site.telegramUsuario} solo publicamos vacantes y avisos. Si te escriben desde otro lado en nuestro nombre, no somos nosotros.
           </p>
         </div>
       </div>

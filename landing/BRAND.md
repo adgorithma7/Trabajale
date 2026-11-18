@@ -29,7 +29,7 @@ a cada lado. Tamaño mínimo del isotipo: 24 px. No se recolorea, no se gira, no
 | `tinta` | `#14213D` | Texto principal. Fondo de las tarjetas al invertirse. |
 | `gris` | `#5A6580` | Texto secundario. |
 | `verde` | `#1FA855` | Solo WhatsApp y estado "en línea". |
-| `telegram` | `#2AABEE` | Sin uso (Telegram ya no aparece en la web). |
+| `telegram` | `#2AABEE` | Solo el icono de Telegram. |
 
 Regla: azul manda, naranja señala, verde y celeste identifican canales. Sin otros colores.
 
@@ -76,14 +76,16 @@ así cualquier componente nuevo que se añada con `npx shadcn@latest add` sale y
 
 Mismo sistema que la web: fondo "malla" azul noche con retícula, logo blanco arriba a la izquierda, chip mono en
 mayúsculas, titular Outfit con la frase clave en degradado naranja, Luca a la derecha o al centro, botón naranja
-con la URL y pie mono con dominio y WhatsApp. Plantillas en `src/app/piezas/[pieza]/page.tsx`.
+con la URL y pie mono con dominio, Telegram y WhatsApp. Plantillas en `src/app/piezas/[pieza]/page.tsx`.
 
 ## Medios y prioridades
 
 1. Formulario de Google (acción principal, siempre naranja).
 2. WhatsApp 0422-TRABAJA (+58 422 872 2252): acción secundaria, siempre visible junto a la principal. Es el canal de
    contacto, de vacantes, de empresas y de reporte, y por el que Luca escribe.
-La web no publica correo ni Telegram.
+3. Canal de Telegram @trabajale: para mantenerse informado (vacantes nuevas y avisos de cierre). Solo publica; nunca
+   escribe por privado. Va en el banner, el paso 4, la sección de WhatsApp, el CTA final, el menú móvil y el pie.
+La web no publica correo.
 
 ## Voz de la empresa en una frase
 

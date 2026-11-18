@@ -30,8 +30,8 @@ test.describe("Portada", () => {
     const whatsapps = page.locator('a[href^="https://wa.me/584228722252"]');
     expect(await formularios.count()).toBeGreaterThanOrEqual(4);
     expect(await whatsapps.count()).toBeGreaterThanOrEqual(4);
-    // Telegram ya no es un medio de contacto
-    await expect(page.locator('a[href*="t.me/"]')).toHaveCount(0);
+    // El canal de Telegram se sigue promocionando para mantenerse informado
+    expect(await page.locator(`a[href="${site.telegram}"]`).count()).toBeGreaterThanOrEqual(3);
     // Todos abren en pestaña nueva y sin filtrar el referer
     for (const a of await formularios.all()) {
       await expect(a).toHaveAttribute("target", "_blank");
@@ -62,9 +62,9 @@ test.describe("Portada", () => {
     await expect(page.getByRole("button", { name: /Cuéntanos tu experiencia/ })).toHaveAttribute("aria-current", "step");
     await page.getByRole("button", { name: /Guardar mi experiencia/ }).click();
     await expect(page.getByText("paso 3 / 4")).toBeVisible();
-    await page.getByRole("button", { name: /Ver vacantes por WhatsApp/ }).click();
+    await page.getByRole("button", { name: /Ver el canal de vacantes/ }).click();
     await expect(page.getByText("paso 4 / 4")).toBeVisible();
-    await expect(page.getByRole("link", { name: /Escribir al 0422-TRABAJA/ }).first()).toHaveAttribute("href", site.whatsappVacantes);
+    await expect(page.getByRole("link", { name: /Unirme al canal @trabajale/ }).first()).toHaveAttribute("href", site.telegram);
   });
 
   test("el recorrido de pasos cambia la vista previa al tocar un paso", async ({ page }) => {

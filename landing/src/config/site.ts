@@ -1,6 +1,6 @@
 /**
  * Un solo lugar para todos los enlaces y datos de contacto de Trabájale.
- * Si cambia el formulario o el WhatsApp, se edita aquí y nada más.
+ * Si cambia el formulario, el WhatsApp o el canal, se edita aquí y nada más.
  */
 import { bannerActual } from "./temporada";
 
@@ -16,6 +16,10 @@ export const site = {
     "https://docs.google.com/forms/d/e/1FAIpQLSeK_wIgj7PKlMWoMtL0XYpKYIUwqagMbIjv99GzLxpFBvQHJg/viewform",
   whatsappVacantes:
     "https://wa.me/584228722252?text=Hola%2C%20quiero%20saber%20qu%C3%A9%20vacantes%20hay%20disponibles",
+  // Para mantenerse informado: canal de Telegram (solo publica; no escribimos por privado desde Telegram)
+  telegram: "https://t.me/trabajale",
+  telegramUsuario: "@trabajale",
+
   whatsapp:
     "https://wa.me/584228722252?text=Hola%2C%20quiero%20registrarme%20en%20Trab%C3%A1jale",
   whatsappEmpresas:
@@ -34,7 +38,7 @@ export const site = {
 export const banner = {
   activo: true,
   ...bannerActual,
-  enlace: site.whatsappVacantes,
+  enlace: site.telegram,
 } as const;
 
 /** `secundario: true`: el enlace no va en el menú de escritorio (sí en el menú móvil y en el footer). */

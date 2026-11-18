@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { site } from "@/config/site";
-import { IconoCheck, IconoWhatsApp } from "./Iconos";
+import { IconoCheck, IconoTelegram, IconoWhatsApp } from "./Iconos";
 
 const DURACION = 5500;
 
@@ -25,9 +25,9 @@ const pasos = [
     etiqueta: "whatsapp · mensaje directo",
   },
   {
-    titulo: "Pregunta por vacantes en WhatsApp",
-    texto: "Mientras tanto, escríbenos cuando quieras y te contamos qué oportunidades hay abiertas para que no se te escape ninguna.",
-    etiqueta: `whatsapp · ${site.whatsappTexto}`,
+    titulo: "Mantente informado en Telegram",
+    texto: "Mientras tanto, en el canal publicamos cada nueva oportunidad para que no se te escape ninguna.",
+    etiqueta: `telegram · ${site.telegramUsuario}`,
   },
 ];
 
@@ -144,21 +144,21 @@ function VistaMensaje({ onSiguiente }: VistaProps) {
         Una persona del equipo te escribe hoy para explicarte horario, pago y la prueba. Nada de esto tiene costo.
         <span className="mt-1 block text-right font-mono text-[10px] text-gris">10:14</span>
       </div>
-      <BotonSiguiente onClick={onSiguiente}>Ver vacantes por WhatsApp</BotonSiguiente>
+      <BotonSiguiente onClick={onSiguiente}>Ver el canal de vacantes</BotonSiguiente>
     </div>
   );
 }
 
-function VistaWhatsApp() {
+function VistaTelegram() {
   return (
     <div className="flex flex-col gap-2.5">
       <div className="flex items-center gap-2.5 border-b border-gris-claro pb-2.5">
         <AvatarLuca />
         <div className="min-w-0">
-          <p className="truncate text-[14px] font-bold text-tinta">Luca · Trabájale</p>
-          <p className="font-mono text-[10px] text-gris">whatsapp · {site.whatsappTexto}</p>
+          <p className="truncate text-[14px] font-bold text-tinta">Trabájale</p>
+          <p className="font-mono text-[10px] text-gris">canal · {site.telegramUsuario}</p>
         </div>
-        <IconoWhatsApp size={20} className="ml-auto text-verde" />
+        <IconoTelegram size={20} className="ml-auto text-telegram" />
       </div>
       {[
         { t: "Nueva vacante: Asesor de ventas por WhatsApp", d: "Remoto · Medio tiempo · Tardes", h: "9:02" },
@@ -176,20 +176,19 @@ function VistaWhatsApp() {
         </div>
       ))}
       <a
-        href={site.whatsappVacantes}
+        href={site.telegram}
         target="_blank"
         rel="noopener"
-        data-evento="Contact"
-        className="mt-1 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-verde-oscuro font-bold text-white transition-[transform,background-color] hover:bg-tinta active:scale-[0.98]"
+        className="mt-1 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-azul font-bold text-white transition-[transform,background-color] hover:bg-tinta active:scale-[0.98]"
       >
-        <IconoWhatsApp size={18} className="text-white" />
-        Escribir al {site.whatsappTexto}
+        <IconoTelegram size={18} className="text-[#7cd0ff]" />
+        Unirme al canal {site.telegramUsuario}
       </a>
     </div>
   );
 }
 
-const vistas: Array<(p: VistaProps) => React.JSX.Element> = [VistaFormulario, VistaExperiencia, VistaMensaje, VistaWhatsApp];
+const vistas: Array<(p: VistaProps) => React.JSX.Element> = [VistaFormulario, VistaExperiencia, VistaMensaje, VistaTelegram];
 
 /* ---------- Recorrido interactivo ---------- */
 

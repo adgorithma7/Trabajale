@@ -30,7 +30,7 @@ Motion para animación, y para el 3D: Three.js con React Three Fiber y Drei.
 
 | Qué | Archivo |
 |---|---|
-| Enlaces (formulario y WhatsApp), menú y **banner superior** | `src/config/site.ts` |
+| Enlaces (formulario, WhatsApp y canal de Telegram), menú y **banner superior** | `src/config/site.ts` |
 | Guía de marca (colores, tipografía, voz, reglas de interacción) | `BRAND.md` |
 | Tema (tokens de shadcn mapeados a la marca, claro y oscuro) | `src/app/globals.css`, bloque `:root` / `.dark` |
 | Componentes base shadcn/ui | `src/components/ui/*` (se añaden con `npx shadcn@latest add <componente>`) |
@@ -64,14 +64,14 @@ Motion para animación, y para el 3D: Three.js con React Three Fiber y Drei.
 3. **Nuestro compromiso**: cuatro garantías con el mismo tratamiento (numeral azul, línea naranja) que invierten el color
    al pasar el cursor y despliegan el detalle al tocarlas.
 4. **Cómo funciona**: recorrido interactivo de cuatro pasos. Cada paso muestra en un teléfono cómo se ve en la práctica
-   (formulario, resumen de experiencia, chat de WhatsApp con Luca, preguntar vacantes por WhatsApp); avanza solo, se pausa al pasar el cursor.
-5. **WhatsApp** (`WhatsApp.tsx`): ventajas y un teléfono en perspectiva con mensajes de ejemplo.
+   (formulario, resumen de experiencia, chat de WhatsApp con Luca, canal de Telegram); avanza solo, se pausa al pasar el cursor.
+5. **WhatsApp** (`WhatsApp.tsx`): ventajas, un teléfono en perspectiva con mensajes de ejemplo y un recuadro al canal de Telegram.
 6. **Nuestra cultura**: manifiesto del equipo ("en lo que creemos"), cuatro principios, "cómo trabajamos" en tres pasos,
    tarjeta de Luca con cita, conversación típica por WhatsApp y el reel de 30 segundos.
 7. **Seguridad**: compromisos tomados de la política de privacidad y canales oficiales.
 8. **Para empresas**: contacto por WhatsApp.
 9. **Preguntas frecuentes** (acordeón sin JavaScript).
-10. **CTA final** con fondo 3D propio (icosaedro de alambre), formulario, WhatsApp y botones para
+10. **CTA final** con fondo 3D propio (icosaedro de alambre), formulario, WhatsApp, canal de Telegram y botones para
     **compartir** la página (WhatsApp, Web Share o copiar enlace).
 12. **Footer**, **barra inferior fija en celular** con formulario + WhatsApp, botón **volver arriba** y página **404** propia.
 
@@ -103,8 +103,10 @@ Todas muestran un borde degradado azul→naranja al pasar el cursor. Los botones
 ## Canales
 
 Todos los botones de contacto llevan al **WhatsApp 0422-TRABAJA** con un mensaje ya escrito: `site.whatsappVacantes`
-(personas que buscan empleo), `site.whatsapp` (registro) y `site.whatsappEmpresas` (empresas). La web no publica correo
-ni Telegram; las pruebas fallan si vuelve a aparecer un `mailto:` o un enlace a `t.me/`.
+(personas que buscan empleo), `site.whatsapp` (registro) y `site.whatsappEmpresas` (empresas). El **canal de Telegram**
+(`site.telegram`, @trabajale) se promociona para mantenerse informado: banner, paso 4, sección de WhatsApp, CTA final,
+menú móvil y pie. Sus enlaces no envían evento al Pixel. La web no publica correo; las pruebas fallan si aparece un `mailto:`.
+Confirmar que `https://t.me/trabajale` es el canal oficial; si no, cambiarlo en `src/config/site.ts`.
 
 ## Versión de diciembre (temporada)
 
@@ -114,7 +116,7 @@ Todo está en `src/config/temporada.ts`. La temporada entra por el mensaje y el 
 | Elemento | Texto |
 |---|---|
 | Banner, etiqueta | Diciembre |
-| Banner, texto | Las empresas están sumando personal para la temporada. Pregúntanos por WhatsApp qué vacantes hay abiertas. |
+| Banner, texto | Las empresas están sumando personal para la temporada. Publicamos las vacantes nuevas en el canal de Telegram. |
 | Titular | Empleos remotos o presenciales, **para empezar en diciembre** |
 | Subtítulo | Regístrate gratis, cuéntanos qué sabes hacer y te avisamos cuando haya una oportunidad en Venezuela que encaje contigo. |
 | Chip superior | Bolsa de empleo gratuita para Venezuela |
@@ -126,7 +128,7 @@ apagarla (`activa: false`) y redesplegar. Una web con adornos en febrero comunic
 
 **Solo web general**: la página `/cucuta` se retiró (2026-11-17); la web atiende al público general de Venezuela.
 
-**Vacantes fuera de la portada**: en esta versión no se muestran trabajos en la web; las vacantes se cuentan por WhatsApp. Los componentes `Empleos.tsx`, `VacantesLista.tsx` y `src/data/vacantes.ts` siguen en el repo sin usar, para retomarlos cuando se defina esa sección.
+**Vacantes fuera de la portada**: en esta versión no se muestran trabajos en la web; las vacantes van por el canal de Telegram. Los componentes `Empleos.tsx`, `VacantesLista.tsx` y `src/data/vacantes.ts` siguen en el repo sin usar, para retomarlos cuando se defina esa sección.
 
 ## Pendientes antes de publicar
 

@@ -49,12 +49,12 @@ const secciones: { titulo: string; contenido: React.ReactNode }[] = [
   {
     titulo: "Con quién se comparten.",
     contenido:
-      "Con nadie fuera de Trabájale, con una sola excepción: la empresa que ofrezca una oportunidad concreta, y únicamente después de que tú nos digas que te interesa. Nunca entregamos tu perfil a una empresa sin hablar contigo primero. Nuestros proveedores (Google, Cloudflare, Meta y WhatsApp) procesan datos técnicos para prestar su servicio, según sus propias políticas.",
+      "Con nadie fuera de Trabájale, con una sola excepción: la empresa que ofrezca una oportunidad concreta, y únicamente después de que tú nos digas que te interesa. Nunca entregamos tu perfil a una empresa sin hablar contigo primero. Nuestros proveedores (Google, Cloudflare, Meta, Telegram y WhatsApp) procesan datos técnicos para prestar su servicio, según sus propias políticas.",
   },
   {
     titulo: "Cómo te contactamos.",
     contenido:
-      "Por WhatsApp, únicamente para hablar de oportunidades o de tu registro. Las conversaciones por WhatsApp están cifradas de extremo a extremo; WhatsApp, que pertenece a Meta, trata los datos de la conexión según su política de privacidad.",
+      "Por WhatsApp, únicamente para hablar de oportunidades o de tu registro. Las conversaciones por WhatsApp están cifradas de extremo a extremo; WhatsApp, que pertenece a Meta, trata los datos de la conexión según su política de privacidad. Seguir nuestro canal de Telegram es voluntario y no requiere registrarte.",
   },
   {
     titulo: "Cookies y medición en la web.",

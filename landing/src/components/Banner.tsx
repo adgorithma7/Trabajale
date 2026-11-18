@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { banner } from "@/config/site";
-import { IconoCerrar, IconoWhatsApp } from "./Iconos";
+import { IconoCerrar, IconoTelegram } from "./Iconos";
 
 const CLAVE = "trabajale-banner-cerrado";
 const sinSuscripcion = () => () => {};
@@ -61,13 +61,12 @@ export function Banner() {
               href={banner.enlace}
               target="_blank"
               rel="noopener"
-              data-evento="Contact"
               aria-label={banner.enlaceTexto}
               className="inline-flex min-h-9 flex-none items-center gap-1.5 whitespace-nowrap rounded-lg px-2.5 font-bold text-white underline decoration-naranja decoration-2 underline-offset-4 transition-colors hover:bg-white hover:text-tinta hover:no-underline"
             >
-              <IconoWhatsApp size={16} className="text-[#25d366]" />
+              <IconoTelegram size={16} className="text-telegram" />
               <span className="hidden sm:inline">{banner.enlaceTexto}</span>
-              <span className="sm:hidden">WhatsApp</span>
+              <span className="sm:hidden">Canal</span>
             </a>
             <button
               type="button"

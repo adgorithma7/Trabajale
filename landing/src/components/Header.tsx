@@ -5,7 +5,7 @@ import { motion, useScroll, useSpring } from "motion/react";
 import { nav, site } from "@/config/site";
 import { Marca } from "./Logo";
 import { Boton } from "./Boton";
-import { IconoMenu, IconoWhatsApp } from "./Iconos";
+import { IconoMenu, IconoTelegram, IconoWhatsApp } from "./Iconos";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 /**
@@ -126,6 +126,10 @@ export function Header() {
               <Boton href={site.whatsappVacantes} variante="whatsapp" evento="Contact">
                 <IconoWhatsApp />
                 Escríbenos por WhatsApp
+              </Boton>
+              <Boton href={site.telegram} variante="telegram">
+                <IconoTelegram className="text-telegram" />
+                Canal de vacantes en Telegram
               </Boton>
               <p className="mt-2 text-center font-mono text-[11px] text-gris">gratis · sin documentos · 18+</p>
             </div>

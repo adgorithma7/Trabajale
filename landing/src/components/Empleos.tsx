@@ -4,14 +4,14 @@ import { VacantesLista } from "./VacantesLista";
 import { Boton } from "./Boton";
 import { Seccion, Titulo } from "./Seccion";
 import { Revelar } from "./Revelar";
-import { IconoDeCategoria, IconoWhatsApp } from "./Iconos";
+import { IconoDeCategoria, IconoTelegram } from "./Iconos";
 
 export function Empleos({ zona = "venezuela" }: { zona?: Zona }) {
   return (
     <Seccion id="empleos" fondo="azul-claro">
       <Titulo
         eyebrow="Oportunidades"
-        descripcion="Pregúntanos por WhatsApp qué vacantes hay abiertas hoy. Aquí te mostramos las destacadas y los tipos de empleo que solemos publicar."
+        descripcion="Las vacantes nuevas se publican en el canal de Telegram. Aquí te mostramos las destacadas y los tipos de empleo que solemos publicar."
       >
         Empleos para empezar ya, remotos o en tu ciudad
       </Titulo>
@@ -58,12 +58,12 @@ export function Empleos({ zona = "venezuela" }: { zona?: Zona }) {
         <div>
           <p className="font-display text-xl font-bold">¿No ves nada para ti todavía?</p>
           <p className="text-white/80">
-            Cada semana abrimos vacantes nuevas. Escríbenos por WhatsApp y te contamos qué hay para tu perfil.
+            Cada semana publicamos vacantes nuevas en el canal. Únete y te enteras primero.
           </p>
         </div>
-        <Boton href={site.whatsappVacantes} variante="blanco" evento="Contact" className="flex-none">
-          <IconoWhatsApp className="text-verde" />
-          Preguntar por WhatsApp
+        <Boton href={site.telegram} variante="blanco" className="flex-none">
+          <IconoTelegram className="text-telegram" />
+          Ir al canal {site.telegramUsuario}
         </Boton>
       </div>
     </Seccion>

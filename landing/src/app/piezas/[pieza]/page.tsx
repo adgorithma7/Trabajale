@@ -69,6 +69,7 @@ function Pie({ tamano }: { tamano: number }) {
   return (
     <div className="flex items-center justify-between font-mono uppercase tracking-[0.16em] text-white/70" style={{ fontSize: tamano }}>
       <span>{site.dominio}</span>
+      <span>telegram · {site.telegramUsuario}</span>
       <span>whatsapp · {site.whatsappTexto}</span>
     </div>
   );
