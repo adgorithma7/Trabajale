@@ -3,3 +3,7 @@ Thumbs.db
 *.log
 .wrangler/
 node_modules/
+
+# Documentos internos y configuracion local: no se suben al repositorio publico
+interno/
+.claude/

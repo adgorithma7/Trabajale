@@ -44,7 +44,7 @@ Si el dueño pide cambios: se corrige en la misma rama, se hace `git push` otra 
 
 - `sitio/`: la web. Es lo único que se publica. Ver tabla de archivos en `docs/03-publicacion.md`.
 - `docs/`: guías del proyecto. No se publican.
-- `recursos/`: imágenes para perfiles y redes. No se publican.
+- `README.md`: resumen del proyecto.
 
 ## 4. Reglas del proyecto que todo cambio debe respetar
 

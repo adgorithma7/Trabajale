@@ -23,7 +23,7 @@ Todo lo que se publica está ahí. No hay base de datos ni servidor propio: es u
 | `robots.txt`, `sitemap.xml` | Para que Google indexe la página correctamente. |
 | `.well-known/security.txt` | Contacto para quien encuentre un fallo de seguridad. Caduca el 17 de noviembre de 2027: actualizar la fecha antes. |
 
-La carpeta `docs/` tiene estos documentos de trabajo y no se publica.
+La carpeta `docs/` tiene las guías de trabajo y no se publica.
 
 ---
 
@@ -110,14 +110,14 @@ Si en el futuro se van a hacer anuncios en Facebook o Instagram, se agrega Meta 
 
 ## 6b. Meta: verificación de dominio, Pixel, eventos y cookies
 
-Configurado el 5 de noviembre de 2026 a petición de Federico (anuncios en Facebook e Instagram).
+Configurado el 5 de noviembre de 2026 para los anuncios en Facebook e Instagram.
 
 - **Verificación del dominio:** etiqueta `facebook-domain-verification` en el `<head>` de `index.html`.
 - **Pixel de Meta** (ID `1579254357561328`): está en `consent.js`, no pegado en las páginas. Solo se carga si la persona pulsa **Aceptar** en el aviso de cookies; la elección se guarda en su navegador (clave `trabajale-cookies`). Si rechaza, la web funciona igual y Meta no recibe nada.
 - **Eventos:** `Lead` al pulsar "Regístrate gratis", `Contact` al pulsar el botón de WhatsApp, `CompleteRegistration` al abrir `/gracias`. Si el Pixel no está cargado, los botones funcionan igual y no se envía nada.
 - **Página /gracias:** el formulario de Google no redirige solo; hay que poner en su mensaje de confirmación (Configuración, Presentación, Mensaje de confirmación): `¡Listo! Ya quedaste registrado. Toca aquí para ver qué sigue: https://trabajale.ai/gracias`. Meta contará solo a quienes pulsen; la hoja de cálculo es la cifra real.
 - **Política de privacidad:** `/privacidad`. Plazo de conservación 24 meses; respuesta a solicitudes en 15 días hábiles.
-- **Propiedad:** el código de verificación y el Pixel pertenecen a un Administrador comercial de Meta. Debe ser el de Trabájale, no el de un tercero. Pendiente de confirmar con Federico.
+- **Propiedad:** el código de verificación y el Pixel deben pertenecer al Administrador comercial de Meta de Trabájale, no al de un tercero.
 - Para cambiar el ID del Pixel: editar la constante `ID` en `consent.js` y subir con `consent.js?v=2` en las tres páginas.
 
 ---
@@ -134,21 +134,3 @@ Cuando el dominio ya esté en Cloudflare:
 Para **responder** desde hola@trabajale.ai también hay que configurarlo en Gmail como "Enviar como". Es un paso extra opcional; si no se hace, las respuestas saldrán desde el Gmail.
 
 ---
-
-## 8. Checklist de salida a producción
-
-- [x] Número de WhatsApp reemplazado en `index.html` (+58 422 872 2252).
-- [ ] Formulario de Google revisado: preguntas, casilla de consentimiento, hoja de cálculo no compartida públicamente.
-- [x] Dominio comprado en Cloudflare (28 de octubre de 2026), con bloqueo de transferencia. Revisar que la renovación automática esté activa.
-- [x] Web publicada en Cloudflare Pages (28 de octubre de 2026) y probada en un celular real.
-- [x] Dominio `trabajale.ai` y `www` conectados al proyecto de Pages, certificado activo.
-- [x] Regla de redirección de www a trabajale.ai creada y comprobada (28 de octubre de 2026).
-- [ ] Vista previa probada: enviarse el enlace por WhatsApp a uno mismo y confirmar que sale la imagen azul con el título.
-- [x] Web Analytics activado (configuración automática, 28 de octubre de 2026).
-- [ ] Correo hola@trabajale.ai creado y cambiado en el pie de página y en /privacidad.
-- [ ] Mensaje de confirmación del formulario de Google con el enlace a /gracias.
-- [ ] Confirmado con Federico que el Pixel y la verificación están en el Administrador comercial de Trabájale.
-- [x] Repositorio en GitHub (adgorithma7/Trabajale), público, rama main protegida, Cloudflare Pages conectado (18 de noviembre de 2026).
-- [ ] Colaborador invitado el 18 de noviembre de 2026; pendiente de que acepte y de revisar su primera pull request.
-- [ ] Verificación en dos pasos activa en Cloudflare, Google y WhatsApp Business. (Cloudflare la marcaba como pendiente el 17 de noviembre de 2026.)
-- [x] HSTS activado en Cloudflare (6 meses, subdominios incluidos) el 17 de noviembre de 2026.
