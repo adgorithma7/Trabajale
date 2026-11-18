@@ -1,0 +1,26 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/luca.webp
+  Cache-Control: public, max-age=604800
+
+/reel.mp4
+  Cache-Control: public, max-age=604800
+
+/poster.jpg
+  Cache-Control: public, max-age=604800
+
+/og.jpg
+  Cache-Control: public, max-age=86400
+
+/og.png
+  Cache-Control: public, max-age=86400
+
+/consent.js
+  Cache-Control: public, max-age=86400

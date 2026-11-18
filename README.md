@@ -4,17 +4,25 @@ Página de registro para personas en Venezuela que buscan empleo remoto o presen
 
 ## Carpetas
 
-- `sitio/`: lo que se publica en Cloudflare Pages. Ver `docs/03-publicacion.md`.
+- `landing/`: código fuente de la web (Next.js + React + Tailwind). Se compila como sitio estático.
+- `sitio/`: lo que se publica en Cloudflare Pages. En esta rama es la salida compilada de `landing/` (no se edita a mano). Ver `docs/03-publicacion.md`.
 - `docs/`: guía de publicación y guía para colaboradores.
 - `interno/` (solo en la copia local, no en GitHub): pendientes, guía de WhatsApp Business y documentos históricos.
 
 ## Ver la página en local
 
+Requiere Node 20 o superior.
+
 ```bash
-python -m http.server 8787 --bind 127.0.0.1 --directory sitio
+cd landing
+npm install
+npm run dev          # modo edición con recarga: http://localhost:3000
+npm run publicar     # compila y copia el resultado a ../sitio
+npx serve@14 ../sitio -l 8787   # ver sitio/ tal como lo sirve Cloudflare: http://localhost:8787
 ```
 
-Luego abrir http://localhost:8787/
+Para publicar un cambio: editar en `landing/src`, `npm run publicar`, y subir con Git los cambios de `landing/` y `sitio/` juntos.
+Cloudflare Pages sigue igual: sin comando de build, carpeta de salida `sitio`.
 
 ## Estado
 
