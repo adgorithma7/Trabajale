@@ -14,7 +14,6 @@ import { opcionesInicio } from "@/config/mensajes";
 import { IconoCampana, IconoCheck, IconoEscudo, IconoSinDinero, IconoWhatsApp } from "./Iconos";
 
 interface Props {
-  chip?: string;
   titular?: string;
   destacado?: string;
   subtitulo?: string;
@@ -22,7 +21,6 @@ interface Props {
 
 /** Hero de la portada. Sin props usa los textos de temporada (o los permanentes si no hay temporada). */
 export function Hero({
-  chip = textosHero.chip,
   titular = textosHero.titular,
   destacado = textosHero.destacado,
   subtitulo = textosHero.subtitulo,
@@ -34,8 +32,8 @@ export function Hero({
   const textoY = useTransform(p, [0, 1], [0, -90]);
   const textoOpacidad = useTransform(p, [0, 0.8], [1, 0.2]);
   const escenaY = useTransform(p, [0, 1], [0, 60]);
-  const escenaGiroX = useTransform(p, [0, 1], [0, 18]);
-  const escenaGiroY = useTransform(p, [0, 1], [0, -12]);
+  const escenaGiroX = useTransform(p, [0, 1], [0, 8]);
+  const escenaGiroY = useTransform(p, [0, 1], [0, -5]);
   const escenaEscala = useTransform(p, [0, 1], [1, 0.9]);
 
   // Entrada: textos escalonados y el titular palabra por palabra con un leve giro 3D.
@@ -64,7 +62,7 @@ export function Hero({
               etiqueta="Lo que ofrece Trabájale"
               nivel="h1"
               claseTitulo="text-[2.4rem] sm:text-5xl lg:text-[3.6rem]"
-              diapositivas={[{ chip, titulo: titular, destacado, texto: subtitulo }, ...opcionesInicio.slice(1)]}
+              diapositivas={[{ titulo: titular, destacado, texto: subtitulo }, ...opcionesInicio.slice(1)]}
             />
           </motion.div>
 
@@ -153,7 +151,7 @@ export function Hero({
                 <Chip icono={<IconoEscudo size={18} />} titulo="Tus datos" texto="Solo lo que tú escribes" />
               </div>
             </div>
-            <div className="capa-3 absolute right-0 top-[27%]">
+            <div className="capa-3 absolute right-[3%] top-[27%]">
               <div className="animate-flotar-lento" style={{ animationDelay: "-3s" }}>
                 <Chip icono={<IconoSinDinero size={18} />} titulo="Sin costo" texto="Hoy, mañana y siempre" />
               </div>

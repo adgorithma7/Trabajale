@@ -7,7 +7,6 @@ import { hero } from "./temporada";
  */
 export const opcionesInicio = [
   {
-    chip: hero.chip,
     titulo: hero.titular,
     destacado: hero.destacado,
     texto: hero.subtitulo,

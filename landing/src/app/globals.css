@@ -168,20 +168,26 @@ h3 {
 .escena {
   --rx: 0;
   --ry: 0;
-  transform: rotateX(calc(var(--ry) * -7deg)) rotateY(calc(var(--rx) * 9deg));
-  transition: transform 0.25s ease-out;
+  /* Sin giro: rotar la escena deformaba la tarjeta de Luca y torcía su texto.
+     La profundidad viene del parallax por capas (cada capa se desplaza a distinta velocidad). */
+}
+.capa-1,
+.capa-2,
+.capa-3,
+.capa-fondo {
+  transition: transform 0.3s ease-out;
 }
 .capa-1 {
   transform: translateZ(18px) translate(calc(var(--rx) * -5px), calc(var(--ry) * -4px));
 }
 .capa-2 {
-  transform: translateZ(40px) translate(calc(var(--rx) * -9px), calc(var(--ry) * -7px));
+  transform: translateZ(40px) translate(calc(var(--rx) * -11px), calc(var(--ry) * -8px));
 }
 .capa-3 {
-  transform: translateZ(60px) translate(calc(var(--rx) * -13px), calc(var(--ry) * -10px));
+  transform: translateZ(60px) translate(calc(var(--rx) * -15px), calc(var(--ry) * -11px));
 }
 .capa-fondo {
-  transform: translateZ(-60px) translate(calc(var(--rx) * 14px), calc(var(--ry) * 10px));
+  transform: translateZ(-60px) translate(calc(var(--rx) * 18px), calc(var(--ry) * 13px));
 }
 
 /* Tarjetas con inclinación: el componente Tilt fija --tx/--ty. Sin brillos ni velos blancos. */
