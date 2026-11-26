@@ -391,6 +391,22 @@ details[open] > :not(summary) {
   animation: entrar 0.25s ease-out both;
 }
 
+/* Franja en movimiento continuo (Franja.tsx) */
+@keyframes franja {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.franja-pista {
+  animation: franja 38s linear infinite;
+}
+.franja:hover .franja-pista {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

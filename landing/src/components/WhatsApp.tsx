@@ -2,7 +2,7 @@ import Image from "next/image";
 import { site } from "@/config/site";
 import { Boton } from "./Boton";
 import { Tilt } from "./Tilt";
-import { Revelar } from "./Revelar";
+import { GiroScroll } from "./GiroScroll";
 import { IconoCheck, IconoTelegram, IconoWhatsApp } from "./Iconos";
 
 const ventajas = [
@@ -62,8 +62,8 @@ export function WhatsApp() {
         </div>
 
         {/* Teléfono en perspectiva con una conversación de ejemplo */}
-        <Revelar className="perspectiva">
-          <div className="mx-auto w-full max-w-[340px] [transform:rotateY(-14deg)_rotateX(4deg)] md:ml-auto">
+        <GiroScroll>
+          <div className="mx-auto w-full max-w-[340px] md:ml-auto">
             <Tilt className="rounded-[36px] bg-noche p-2.5 shadow-flotante ring-1 ring-white/20" max={6}>
               <div className="overflow-hidden rounded-[28px] bg-white text-tinta">
                 <div className="flex items-center gap-3 bg-azul-claro px-4 py-3">
@@ -108,7 +108,7 @@ export function WhatsApp() {
               </div>
             </Tilt>
           </div>
-        </Revelar>
+        </GiroScroll>
       </div>
     </section>
   );

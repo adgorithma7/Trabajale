@@ -14,7 +14,7 @@ interface Props {
  * Tarjeta que se inclina hacia el cursor (efecto 3D ligero).
  * En pantallas táctiles no hace nada y con `prefers-reduced-motion` la CSS lo anula.
  */
-export function Tilt({ children, className = "", max = 7, as = "div" }: Props) {
+export function Tilt({ children, className = "", max = 10, as = "div" }: Props) {
   const ref = useRef<HTMLElement>(null);
 
   const mover = (e: PointerEvent<HTMLElement>) => {

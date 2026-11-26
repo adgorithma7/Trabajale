@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { motion } from "motion/react";
+import type { ReactNode } from "react";
 
 /**
- * Hace aparecer el contenido con un leve desplazamiento cuando entra en pantalla.
- * Lo que ya está a la vista al cargar se muestra de inmediato; sin JavaScript todo es visible.
- * `as="li"` permite usarlo dentro de listas sin romper el HTML.
+ * Hace aparecer el contenido cuando entra en pantalla: sube y se endereza desde una leve
+ * inclinación 3D (perspectiva). Solo opacity y transform. Con "reducir movimiento",
+ * MotionConfig deja solo el fundido. `as="li"` permite usarlo dentro de listas.
  */
 export function Revelar({
   children,
@@ -18,42 +19,16 @@ export function Revelar({
   retraso?: number;
   as?: "div" | "li";
 }) {
-  const ref = useRef<HTMLDivElement & HTMLLIElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    document.documentElement.classList.add("js");
-
-    const mostrar = () => el.classList.add("visible");
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      typeof IntersectionObserver === "undefined" ||
-      el.getBoundingClientRect().top < window.innerHeight
-    ) {
-      mostrar();
-      return;
-    }
-    const obs = new IntersectionObserver(
-      (entradas) => {
-        if (entradas.some((en) => en.isIntersecting)) {
-          mostrar();
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.05 },
-    );
-    obs.observe(el);
-    const t = window.setTimeout(mostrar, 4000);
-    return () => {
-      obs.disconnect();
-      window.clearTimeout(t);
-    };
-  }, []);
-
-  const Etiqueta = as;
+  const Etiqueta = as === "li" ? motion.li : motion.div;
   return (
-    <Etiqueta ref={ref} className={`revelar ${className}`} style={{ transitionDelay: `${retraso}ms` }}>
+    <Etiqueta
+      className={className}
+      initial={{ opacity: 0, y: 28, rotateX: 12, transformPerspective: 900 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true, margin: "0px 0px -8% 0px" }}
+      transition={{ type: "spring", stiffness: 140, damping: 20, mass: 0.6, delay: retraso / 1000 }}
+      style={{ transformOrigin: "50% 100%" }}
+    >
       {children}
     </Etiqueta>
   );

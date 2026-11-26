@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform, type Variants } from "motion/react";
 import { site } from "@/config/site";
 import { hero as textosHero } from "@/config/temporada";
 import { Boton } from "./Boton";
 import { Escena } from "./Escena";
 import { Fondo3DCarga } from "./Fondo3DCarga";
+import { Magnetico } from "./Magnetico";
 import { IconoCampana, IconoCheck, IconoEscudo, IconoSinDinero, IconoWhatsApp } from "./Iconos";
 
 interface Props {
@@ -23,28 +25,47 @@ export function Hero({
   destacado = textosHero.destacado,
   subtitulo = textosHero.subtitulo,
 }: Props = {}) {
-  const reducido = useReducedMotion();
+  // Parallax con el scroll: al bajar, el texto sube más rápido y la tarjeta de Luca se inclina y se aleja.
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const p = useSpring(scrollYProgress, { stiffness: 120, damping: 26, mass: 0.4 });
+  const textoY = useTransform(p, [0, 1], [0, -90]);
+  const textoOpacidad = useTransform(p, [0, 0.8], [1, 0.2]);
+  const escenaY = useTransform(p, [0, 1], [0, 60]);
+  const escenaGiroX = useTransform(p, [0, 1], [0, 18]);
+  const escenaGiroY = useTransform(p, [0, 1], [0, -12]);
+  const escenaEscala = useTransform(p, [0, 1], [1, 0.9]);
 
-  // Entrada escalonada del texto: solo opacity y transform, rápida y con ease-out
+  // Entrada: textos escalonados y el titular palabra por palabra con un leve giro 3D.
+  // Variantes fijas (mismo HTML en servidor y navegador); MotionConfig reduce el movimiento si hace falta.
   const contenedor: Variants = {
     oculto: {},
-    visible: { transition: { staggerChildren: reducido ? 0 : 0.07, delayChildren: 0.05 } },
+    visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
   };
   const item: Variants = {
-    oculto: reducido ? { opacity: 0 } : { opacity: 0, y: 14 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: [0.2, 0.7, 0.2, 1] } },
+    oculto: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 170, damping: 22 } },
+  };
+  const titularVar: Variants = {
+    oculto: {},
+    visible: { transition: { staggerChildren: 0.055 } },
+  };
+  const palabra: Variants = {
+    oculto: { opacity: 0, y: "0.55em", rotateX: -75 },
+    visible: { opacity: 1, y: 0, rotateX: 0, transition: { type: "spring", stiffness: 190, damping: 18 } },
   };
   const escena: Variants = {
-    oculto: reducido ? { opacity: 0 } : { opacity: 0, scale: 0.96 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: [0.2, 0.7, 0.2, 1], delay: 0.15 } },
+    oculto: { opacity: 0, scale: 0.9, rotateY: -18, rotateX: 8 },
+    visible: { opacity: 1, scale: 1, rotateY: 0, rotateX: 0, transition: { type: "spring", stiffness: 90, damping: 16, delay: 0.25 } },
   };
+  const palabras = (t: string) => t.split(" ").filter(Boolean);
 
   return (
-    <div className="malla-hero reticula relative overflow-hidden text-white">
+    <div ref={ref} className="malla-hero reticula relative overflow-hidden text-white">
       <Fondo3DCarga />
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 md:grid-cols-[1.05fr_1fr] md:pb-20 md:pt-20 lg:gap-16">
         {/* Texto */}
-        <motion.div className="relative z-10" variants={contenedor} initial="oculto" animate="visible">
+        <motion.div className="relative z-10" variants={contenedor} initial="oculto" animate="visible" style={{ y: textoY, opacity: textoOpacidad }}>
           <motion.p
             variants={item}
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 font-mono text-[12px] uppercase tracking-[0.12em]"
@@ -52,20 +73,40 @@ export function Hero({
             <span className="h-2 w-2 rounded-full bg-naranja shadow-[0_0_12px_#ff7a29]" aria-hidden="true" />
             {chip}
           </motion.p>
-          <motion.h1 variants={item} className="text-[2.4rem] font-bold leading-[1.02] sm:text-5xl lg:text-[3.9rem]">
-            {titular}{" "}
-            <span className="bg-gradient-to-r from-[#ffb074] via-naranja to-[#ff9a4d] bg-clip-text text-transparent">
-              {destacado}
-            </span>
+          <motion.h1
+            variants={titularVar}
+            className="text-[2.4rem] font-bold leading-[1.02] [perspective:800px] sm:text-5xl lg:text-[3.9rem]"
+          >
+            {/* Cada palabra entra por separado; los espacios son texto real (buscadores, lectores, copiar y pegar). */}
+            {palabras(titular).map((w, i) => (
+              <span key={`t${i}`}>
+                <motion.span variants={palabra} className="inline-block origin-bottom">
+                  {w}
+                </motion.span>{" "}
+              </span>
+            ))}
+            {palabras(destacado).map((w, i, todas) => (
+              <span key={`d${i}`}>
+                <motion.span
+                  variants={palabra}
+                  className="inline-block origin-bottom bg-gradient-to-r from-[#ffb074] via-naranja to-[#ff9a4d] bg-clip-text text-transparent"
+                >
+                  {w}
+                </motion.span>
+                {i < todas.length - 1 ? " " : ""}
+              </span>
+            ))}
           </motion.h1>
           <motion.p variants={item} className="mt-6 max-w-[36ch] text-lg font-medium text-white/85 sm:text-xl">
             {subtitulo}
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Boton href={site.formulario} evento="Lead" className="sm:min-w-56">
-              Regístrate gratis
-            </Boton>
+            <Magnetico>
+              <Boton href={site.formulario} evento="Lead" className="w-full sm:min-w-56">
+                Regístrate gratis
+              </Boton>
+            </Magnetico>
             <Boton href={site.whatsappVacantes} variante="vidrio" evento="Contact" className="sm:min-w-56">
               <IconoWhatsApp className="text-[#25d366]" />
               Escríbenos por WhatsApp
@@ -87,10 +128,15 @@ export function Hero({
 
         {/* Escena 3D: la tarjeta de equipo de Luca con chips flotantes */}
         <motion.div
+          style={{ y: escenaY, rotateX: escenaGiroX, rotateY: escenaGiroY, scale: escenaEscala, transformPerspective: 1200 }}
+          className="relative mx-auto w-full max-w-[460px] md:max-w-none"
+        >
+        <motion.div
           variants={escena}
           initial="oculto"
           animate="visible"
-          className="perspectiva relative mx-auto w-full max-w-[460px] md:max-w-none"
+          style={{ transformPerspective: 1200 }}
+          className="perspectiva relative w-full"
         >
           <Escena className="relative aspect-[4/5.2] w-full sm:aspect-[4/4.4]">
             <div
@@ -149,6 +195,7 @@ export function Hero({
               </div>
             </div>
           </Escena>
+        </motion.div>
         </motion.div>
       </div>
 

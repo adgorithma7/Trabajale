@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { usePrefiereMenosMovimiento } from "@/lib/usePrefiereMenosMovimiento";
 import { site } from "@/config/site";
 import { IconoCheck, IconoTelegram, IconoWhatsApp } from "./Iconos";
 
@@ -199,7 +200,7 @@ export function Pasos() {
   const [autoplayElegido, setAutoplay] = useState<boolean | null>(null);
   // Cuenta cada elección manual: reinicia el temporizador y la barra de progreso.
   const [vuelta, setVuelta] = useState(0);
-  const reducido = useReducedMotion();
+  const reducido = usePrefiereMenosMovimiento();
   const autoplay = autoplayElegido ?? !reducido;
 
   useEffect(() => {

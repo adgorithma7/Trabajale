@@ -17,7 +17,7 @@ export type Variante3D = "hero" | "cierre";
 
 function Pieza({ children, posicion, velocidad = 1 }: { children: React.ReactNode; posicion: [number, number, number]; velocidad?: number }) {
   return (
-    <Float speed={velocidad} rotationIntensity={0.5} floatIntensity={1.1} position={posicion}>
+    <Float speed={velocidad * 1.4} rotationIntensity={0.9} floatIntensity={1.6} position={posicion}>
       {children}
     </Float>
   );
@@ -27,15 +27,20 @@ function Material({ color, brillo = 0.18 }: { color: string; brillo?: number }) 
   return <meshStandardMaterial color={color} roughness={0.28} metalness={0.35} emissive={color} emissiveIntensity={brillo} />;
 }
 
-function useSeguirCursor(fuerza = 1) {
+function useSeguirCursor(fuerza = 1, conScroll = false) {
   const grupo = useRef<Group>(null);
   useFrame((estado, dt) => {
     const g = grupo.current;
     if (!g) return;
-    const ox = estado.pointer.x * 0.22 * fuerza;
-    const oy = estado.pointer.y * 0.16 * fuerza;
-    g.rotation.y += (ox - g.rotation.y) * Math.min(1, dt * 3);
-    g.rotation.x += (-oy - g.rotation.x) * Math.min(1, dt * 3);
+    // Scroll normalizado (0 arriba, 1 tras una pantalla): las piezas giran y suben al bajar.
+    const s = conScroll ? Math.min(window.scrollY / window.innerHeight, 1.5) : 0;
+    const ox = estado.pointer.x * 0.45 * fuerza + s * 0.9;
+    const oy = estado.pointer.y * 0.32 * fuerza - s * 0.35;
+    const k = Math.min(1, dt * 4);
+    g.rotation.y += (ox - g.rotation.y) * k;
+    g.rotation.x += (-oy - g.rotation.x) * k;
+    g.position.y += (s * 1.6 - g.position.y) * k;
+    g.position.x += (estado.pointer.x * 0.35 * fuerza - g.position.x) * k;
   });
   return grupo;
 }
@@ -67,10 +72,13 @@ function Particulas({ puntos }: { puntos: [number, number, number][] }) {
 }
 
 function GrupoHero() {
-  const grupo = useSeguirCursor();
+  const grupo = useSeguirCursor(1, true);
   const anillo = useRef<Mesh>(null);
   useFrame((_, dt) => {
-    if (anillo.current) anillo.current.rotation.z += dt * 0.2;
+    if (anillo.current) {
+      anillo.current.rotation.z += dt * 0.35;
+      anillo.current.rotation.x += dt * 0.08;
+    }
   });
   const particulas = useParticulas(80);
 
@@ -157,6 +165,8 @@ export default function Fondo3D({ variante = "hero" }: { variante?: Variante3D }
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
       <Canvas
+        eventSource={typeof document !== "undefined" ? document.body : undefined}
+        eventPrefix="client"
         camera={{ position: [0, 0, 7], fov: 45 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}

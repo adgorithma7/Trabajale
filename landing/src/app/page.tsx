@@ -2,6 +2,7 @@ import { Banner } from "@/components/Banner";
 import { Header } from "@/components/Header";
 import { VolverArriba } from "@/components/VolverArriba";
 import { Hero } from "@/components/Hero";
+import { Franja } from "@/components/Franja";
 import { Garantias } from "@/components/Garantias";
 import { ComoFunciona } from "@/components/ComoFunciona";
 import { WhatsApp } from "@/components/WhatsApp";
@@ -26,6 +27,7 @@ export default function Inicio() {
       <Header />
       <main id="contenido" className="flex-1 pb-20 md:pb-0">
         <Hero />
+        <Franja />
         <Garantias />
         <ComoFunciona />
         <WhatsApp />
