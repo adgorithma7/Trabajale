@@ -9,6 +9,8 @@ import { Boton } from "./Boton";
 import { Escena } from "./Escena";
 import { Fondo3DCarga } from "./Fondo3DCarga";
 import { Magnetico } from "./Magnetico";
+import { Carrusel3D } from "./Carrusel3D";
+import { opcionesInicio } from "@/config/mensajes";
 import { IconoCampana, IconoCheck, IconoEscudo, IconoSinDinero, IconoWhatsApp } from "./Iconos";
 
 interface Props {
@@ -46,19 +48,10 @@ export function Hero({
     oculto: { opacity: 0, y: 16 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 170, damping: 22 } },
   };
-  const titularVar: Variants = {
-    oculto: {},
-    visible: { transition: { staggerChildren: 0.055 } },
-  };
-  const palabra: Variants = {
-    oculto: { opacity: 0, y: "0.55em", rotateX: -75 },
-    visible: { opacity: 1, y: 0, rotateX: 0, transition: { type: "spring", stiffness: 190, damping: 18 } },
-  };
   const escena: Variants = {
     oculto: { opacity: 0, scale: 0.9, rotateY: -18, rotateX: 8 },
     visible: { opacity: 1, scale: 1, rotateY: 0, rotateX: 0, transition: { type: "spring", stiffness: 90, damping: 16, delay: 0.25 } },
   };
-  const palabras = (t: string) => t.split(" ").filter(Boolean);
 
   return (
     <div ref={ref} className="malla-hero reticula relative overflow-hidden text-white">
@@ -66,40 +59,14 @@ export function Hero({
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 md:grid-cols-[1.05fr_1fr] md:pb-20 md:pt-20 lg:gap-16">
         {/* Texto */}
         <motion.div className="relative z-10" variants={contenedor} initial="oculto" animate="visible" style={{ y: textoY, opacity: textoOpacidad }}>
-          <motion.p
-            variants={item}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 font-mono text-[12px] uppercase tracking-[0.12em]"
-          >
-            <span className="h-2 w-2 rounded-full bg-naranja shadow-[0_0_12px_#ff7a29]" aria-hidden="true" />
-            {chip}
-          </motion.p>
-          <motion.h1
-            variants={titularVar}
-            className="text-[2.4rem] font-bold leading-[1.02] [perspective:800px] sm:text-5xl lg:text-[3.9rem]"
-          >
-            {/* Cada palabra entra por separado; los espacios son texto real (buscadores, lectores, copiar y pegar). */}
-            {palabras(titular).map((w, i) => (
-              <span key={`t${i}`}>
-                <motion.span variants={palabra} className="inline-block origin-bottom">
-                  {w}
-                </motion.span>{" "}
-              </span>
-            ))}
-            {palabras(destacado).map((w, i, todas) => (
-              <span key={`d${i}`}>
-                <motion.span
-                  variants={palabra}
-                  className="inline-block origin-bottom bg-gradient-to-r from-[#ffb074] via-naranja to-[#ff9a4d] bg-clip-text text-transparent"
-                >
-                  {w}
-                </motion.span>
-                {i < todas.length - 1 ? " " : ""}
-              </span>
-            ))}
-          </motion.h1>
-          <motion.p variants={item} className="mt-6 max-w-[36ch] text-lg font-medium text-white/85 sm:text-xl">
-            {subtitulo}
-          </motion.p>
+          <motion.div variants={item}>
+            <Carrusel3D
+              etiqueta="Lo que ofrece Trabájale"
+              nivel="h1"
+              claseTitulo="text-[2.4rem] sm:text-5xl lg:text-[3.6rem]"
+              diapositivas={[{ chip, titulo: titular, destacado, texto: subtitulo }, ...opcionesInicio.slice(1)]}
+            />
+          </motion.div>
 
           <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Magnetico>

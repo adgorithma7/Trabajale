@@ -4,6 +4,9 @@ import { Boton } from "./Boton";
 import { Revelar } from "./Revelar";
 import { Compartir } from "./Compartir";
 import { Fondo3DCarga } from "./Fondo3DCarga";
+import { Carrusel3D } from "./Carrusel3D";
+import { Magnetico } from "./Magnetico";
+import { opcionesCierre } from "@/config/mensajes";
 import { IconoTelegram, IconoWhatsApp } from "./Iconos";
 
 export function CtaFinal() {
@@ -14,16 +17,19 @@ export function CtaFinal() {
         <Revelar>
           <div className="grid items-end gap-8 overflow-hidden rounded-[30px] border border-white/15 bg-noche/70 p-7 shadow-vidrio md:grid-cols-[1.4fr_1fr] md:p-10">
             <div>
-              <h2 className="max-w-2xl font-display text-[2rem] font-bold leading-[1.1] md:text-[2.6rem]">
-                Regístrate hoy y deja que la próxima oportunidad te encuentre a ti
-              </h2>
-              <p className="mt-4 max-w-xl text-lg text-white/85">
-                Toma unos minutos, no tiene costo y puedes pedir que borremos tus datos cuando quieras.
-              </p>
+              <Carrusel3D
+                etiqueta="Por qué registrarte"
+                nivel="h2"
+                duracion={7000}
+                claseTitulo="max-w-2xl text-[2rem] md:text-[2.6rem]"
+                diapositivas={opcionesCierre}
+              />
               <div className="mt-8 flex max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap">
-                <Boton href={site.formulario} evento="Lead" className="sm:min-w-52">
-                  Regístrate gratis
-                </Boton>
+                <Magnetico>
+                  <Boton href={site.formulario} evento="Lead" className="w-full sm:min-w-52">
+                    Regístrate gratis
+                  </Boton>
+                </Magnetico>
                 <Boton href={site.whatsappVacantes} variante="blanco" evento="Contact" className="sm:min-w-52">
                   <IconoWhatsApp className="text-verde" />
                   Escribir al {site.whatsappTexto}
@@ -35,8 +41,7 @@ export function CtaFinal() {
               </div>
               <p className="mt-6 text-sm text-white/70">Mayores de 18 años. Trabájale no cobra a quienes se registran.</p>
               <div className="mt-8 border-t border-white/15 pt-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/60">¿Conoces a alguien que busca trabajo?</p>
-                <p className="mb-4 mt-1 text-white/85">Pásale el enlace. Para esa persona también es gratis.</p>
+                <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.16em] text-white/60">Compartir con quien busca trabajo</p>
                 <Compartir claro />
               </div>
             </div>
