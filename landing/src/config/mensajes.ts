@@ -25,7 +25,7 @@ export const opcionesInicio = [
     texto: "Dinos tu ciudad o sector y te avisamos cuando una empresa de la zona necesite gente.",
   },
   {
-    chip: "Sin letra pequeña",
+    chip: "Sin costo",
     titulo: "Gratis y sin documentos,",
     destacado: "te avisamos nosotros",
     texto: "No pedimos cédula, cuentas bancarias ni pagos. Cuando haya una vacante para tu perfil, te escribimos por WhatsApp.",

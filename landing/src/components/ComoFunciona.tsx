@@ -9,7 +9,7 @@ export function ComoFunciona() {
     <Seccion id="como-funciona">
       <Titulo
         eyebrow="Así funciona"
-        descripcion="Cuatro pasos, sin trámites ni letra pequeña. Tú te registras una sola vez y nosotros hacemos el resto. Toca cada paso para ver cómo se ve en la práctica."
+        descripcion="Cuatro pasos y sin trámites. Tú te registras una sola vez y nosotros hacemos el resto. Toca cada paso para ver cómo se ve en la práctica."
       >
         Conseguir empleo no debería ser otro trabajo
       </Titulo>

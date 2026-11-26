@@ -20,7 +20,7 @@ export function CtaFinal() {
               <Carrusel3D
                 etiqueta="Por qué registrarte"
                 nivel="h2"
-                duracion={7000}
+                duracion={4500}
                 claseTitulo="max-w-2xl text-[2rem] md:text-[2.6rem]"
                 diapositivas={opcionesCierre}
               />

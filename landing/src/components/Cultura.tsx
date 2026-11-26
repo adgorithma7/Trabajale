@@ -20,7 +20,7 @@ const principios = [
   {
     icono: IconoCheck,
     titulo: "Hablamos claro",
-    texto: "Sin letra pequeña ni promesas de empleo seguro. Si no hay nada para ti todavía, te lo decimos.",
+    texto: "Sin promesas de empleo seguro. Si no hay nada para ti todavía, te lo decimos.",
   },
   {
     icono: IconoCampana,

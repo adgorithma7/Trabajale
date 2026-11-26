@@ -28,8 +28,8 @@ const palabras = (t: string) => t.split(" ").filter(Boolean);
 
 const cara: Variants = {
   entra: (dir: number) => ({ opacity: 0, rotateX: dir > 0 ? -70 : 70, y: dir > 0 ? 50 : -50, z: -120 }),
-  quieta: { opacity: 1, rotateX: 0, y: 0, z: 0, transition: { type: "spring", stiffness: 110, damping: 18, staggerChildren: 0.045, delayChildren: 0.08 } },
-  sale: (dir: number) => ({ opacity: 0, rotateX: dir > 0 ? 70 : -70, y: dir > 0 ? -50 : 50, z: -120, transition: { duration: 0.32, ease: [0.4, 0, 1, 1] } }),
+  quieta: { opacity: 1, rotateX: 0, y: 0, z: 0, transition: { type: "spring", stiffness: 160, damping: 20, staggerChildren: 0.035, delayChildren: 0.05 } },
+  sale: (dir: number) => ({ opacity: 0, rotateX: dir > 0 ? 70 : -70, y: dir > 0 ? -50 : 50, z: -120, transition: { duration: 0.24, ease: [0.4, 0, 1, 1] } }),
 };
 const palabra: Variants = {
   entra: { opacity: 0, y: "0.6em", rotateX: -80 },
@@ -95,7 +95,7 @@ function Contenido({ d, como, clase }: { d: Diapositiva; como: "h1" | "h2" | "p"
  * progreso; se pausa al pasar el cursor o al enfocar con teclado. Con "reducir movimiento" no
  * avanza solo (y MotionConfig deja solo fundidos). Todas las opciones están en el HTML.
  */
-export function Carrusel3D({ diapositivas, nivel = "h1", duracion = 6500, claseTitulo = "", etiqueta }: Props) {
+export function Carrusel3D({ diapositivas, nivel = "h1", duracion = 4000, claseTitulo = "", etiqueta }: Props) {
   const [[actual, dir], setEstado] = useState<[number, number]>([0, 1]);
   const [pausado, setPausado] = useState(false);
   const [vuelta, setVuelta] = useState(0);
