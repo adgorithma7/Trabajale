@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es" data-evento="CompleteRegistration">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1F4FD8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap">
+<script src="/consent.js?v=1" defer></script>
+<title>¡Listo! Ya estás registrado | Trabájale</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--azul:#1F4FD8;--azul-oscuro:#163BA8;--azul-claro:#EEF3FF;--naranja:#FF7A29;--blanco:#FFFFFF;--tinta:#14213D;--gris:#5A6580;--verde:#1FA855}
+*{box-sizing:border-box}
+body{margin:0;background:var(--blanco);color:var(--tinta);font-family:'Nunito','Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.5}
+a{text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header .wrap{display:flex;align-items:center;gap:10px;padding-block:12px}
+.marca{font-weight:900;font-size:20px;color:var(--azul);letter-spacing:-.3px;display:inline-flex;align-items:center;gap:10px}
+.marca em{font-style:normal;color:var(--naranja)}
+h1{font-weight:900;font-size:clamp(28px,7vw,38px);line-height:1.1;margin:0 0 12px;color:var(--azul);text-wrap:balance}
+.btn{display:block;text-align:center;font-weight:800;font-size:18px;padding:16px 22px;border-radius:14px;min-height:56px}
+.btn:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+.btn-naranja{background:var(--naranja);color:var(--blanco);box-shadow:0 8px 20px rgba(255,122,41,.35)}
+.btn-naranja:hover{background:#F26A15}
+.btn-wa{background:var(--blanco);color:#128C4A;border:2px solid var(--verde)}
+.btn-wa:hover{background:#F1FBF5}
+.btn+.btn{margin-top:12px}
+footer{background:var(--azul);color:var(--blanco);text-align:center;margin-top:40px}
+footer .wrap{padding-block:22px 26px;font-size:14px}
+footer strong{display:block;font-size:18px;font-weight:900;margin-bottom:4px}
+footer a{color:var(--blanco);font-weight:700}
+footer .sep{margin:0 8px;opacity:.7}
+footer small{display:block;margin-top:10px;opacity:.8}
+main .wrap{padding-block:36px 8px}
+.ok{width:72px;height:72px;border-radius:50%;background:var(--azul);display:grid;place-items:center;margin-bottom:18px}
+.lead{font-size:19px;font-weight:600;margin:0 0 28px}
+h2{font-weight:900;font-size:22px;color:var(--azul);margin:0 0 14px}
+ol{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:12px}
+li{display:flex;align-items:flex-start;gap:14px;background:var(--azul-claro);border-radius:16px;padding:14px 16px;font-weight:600;line-height:1.35}
+li b{flex:none;width:36px;height:36px;border-radius:50%;background:var(--naranja);color:var(--blanco);display:grid;place-items:center;font-size:18px}
+.mini{margin:16px 0 0;font-size:13px;color:var(--gris);text-align:center}
+.volver{display:block;text-align:center;margin-top:18px;color:var(--azul);font-weight:800}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="marca" href="/"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#1F4FD8"/><path d="M9 18l6 6 11-13" stroke="#FF7A29" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>trabajale<em>.ai</em></span></a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <div class="ok"><svg width="40" height="40" viewBox="0 0 34 34" aria-hidden="true"><path d="M9 18l6 6 11-13" stroke="#FF7A29" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h1>¡Listo! Ya estás registrado.</h1>
+    <p class="lead">Te contactamos cuando haya una oportunidad para ti.</p>
+    <h2>Qué sigue</h2>
+    <ol>
+      <li><b>1</b><span>Revisamos tu perfil. No tienes que hacer nada más.</span></li>
+      <li><b>2</b><span>Cuando haya una oportunidad que encaje contigo, te escribimos por WhatsApp desde el <strong style="white-space:nowrap">0422-TRABAJA</strong>.</span></li>
+      <li><b>3</b><span>Guarda ese número para reconocer nuestro mensaje. Nunca te pediremos dinero, cédula ni datos bancarios.</span></li>
+    </ol>
+    <a class="btn btn-wa" href="https://wa.me/584228722252?text=Hola%2C%20quiero%20registrarme%20en%20Trab%C3%A1jale" target="_blank" rel="noopener" onclick="tev('Contact')">¿Dudas? Escríbenos por WhatsApp</a>
+    <a class="volver" href="/">Volver al inicio</a>
+    <p class="mini">Trabájale no cobra a quienes se registran.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <strong>trabajale.ai</strong>
+    <a href="https://wa.me/584228722252" target="_blank" rel="noopener" onclick="window.tev&&tev('Contact')">WhatsApp 0422-TRABAJA</a><span class="sep">·</span><a href="/privacidad">Política de privacidad</a>
+    <small>&copy; 2026 Trabájale</small>
+  </div>
+</footer>
+</body>
+</html>

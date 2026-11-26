@@ -1,0 +1,522 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+/*
+  ---break---
+*/
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Identidad de Trabájale (tomada de trabajale.ai):
+  azul de marca + naranja de acción, tinta azul marino para texto, Nunito en todo.
+  Layout: una columna centrada (max 72rem), bandas alternas, tarjetas con profundidad 3D
+  (perspectiva + inclinación al pasar el cursor) y una escena con parallax en el hero.
+*/
+@theme {
+  --color-azul: #1f4fd8;
+  --color-azul-oscuro: #163ba8;
+  --color-azul-vivo: #2a62f0;
+  --color-azul-claro: #eef3ff;
+  --color-azul-suave: #dfe8ff;
+  --color-noche: #0b1748;
+  --color-naranja: #ff7a29;
+  --color-naranja-oscuro: #f26a15;
+  --color-naranja-claro: #fff1e8;
+  --color-tinta: #14213d;
+  --color-gris: #5a6580;
+  --color-gris-claro: #e4e9f3;
+  --color-verde: #1fa855;
+  --color-verde-oscuro: #128c4a;
+  --color-verde-claro: #f1fbf5;
+  --color-telegram: #2aabee;
+  --color-telegram-oscuro: #1f8fcc;
+
+  --font-sans: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--font-outfit), var(--font-jakarta), system-ui, sans-serif;
+  --font-mono: var(--font-dmmono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-boton: 16px;
+  --radius-tarjeta: 22px;
+
+  --shadow-naranja: 0 10px 24px -6px rgb(255 122 41 / 0.55);
+  --shadow-tarjeta: 0 24px 60px -24px rgb(20 33 61 / 0.28), 0 2px 6px rgb(20 33 61 / 0.05);
+  --shadow-flotante: 0 30px 70px -20px rgb(10 30 100 / 0.45);
+  --shadow-vidrio: 0 24px 60px -20px rgb(0 0 0 / 0.45);
+
+  --animate-flotar: flotar 7s ease-in-out infinite;
+  --animate-flotar-lento: flotar 10s ease-in-out infinite;
+  --animate-pulso: pulso 2.4s ease-in-out infinite;
+
+  @keyframes flotar {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -12px, 0);
+    }
+  }
+  @keyframes pulso {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgb(31 168 85 / 0.6);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgb(31 168 85 / 0);
+    }
+  }
+}
+
+:root {
+  color-scheme: light;
+  /* Tema "Trabájale" (theme-factory): tokens de shadcn mapeados a la marca */
+  --background: #ffffff;
+  --foreground: #14213d;
+  --card: #ffffff;
+  --card-foreground: #14213d;
+  --popover: #ffffff;
+  --popover-foreground: #14213d;
+  --primary: #1f4fd8;
+  --primary-foreground: #ffffff;
+  --secondary: #eef3ff;
+  --secondary-foreground: #1f4fd8;
+  --muted: #eef3ff;
+  --muted-foreground: #5a6580;
+  --accent: #ff7a29;
+  --accent-foreground: #ffffff;
+  --destructive: #d93a3a;
+  --border: #e4e9f3;
+  --input: #e4e9f3;
+  --ring: #1f4fd8;
+  --chart-1: #1f4fd8;
+  --chart-2: #ff7a29;
+  --chart-3: #1fa855;
+  --chart-4: #2aabee;
+  --chart-5: #14213d;
+  --radius: 1rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #14213d;
+  --sidebar-primary: #1f4fd8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef3ff;
+  --sidebar-accent-foreground: #1f4fd8;
+  --sidebar-border: #e4e9f3;
+  --sidebar-ring: #1f4fd8;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  /* Red de seguridad: nada decorativo puede provocar scroll horizontal */
+  overflow-x: clip;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-azul);
+  outline-offset: 3px;
+}
+
+/* ---------- Utilidades 3D ---------- */
+@utility perspectiva {
+  perspective: 1400px;
+}
+@utility preservar-3d {
+  transform-style: preserve-3d;
+}
+@utility vidrio {
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+@utility vidrio-claro {
+  background: rgb(255 255 255 / 0.72);
+  border: 1px solid rgb(255 255 255 / 0.9);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+/* Fondo del hero: malla de luces azules con un acento naranja y una retícula sutil */
+.malla-hero {
+  background-color: var(--color-noche);
+  background-image:
+    radial-gradient(60% 70% at 85% 20%, rgb(42 98 240 / 0.75) 0%, transparent 60%),
+    radial-gradient(45% 55% at 10% 90%, rgb(255 122 41 / 0.35) 0%, transparent 60%),
+    radial-gradient(70% 80% at 50% 110%, rgb(31 79 216 / 0.8) 0%, transparent 60%),
+    linear-gradient(180deg, #0b1748 0%, #142d8c 100%);
+}
+/* .reticula: antes pintaba una retícula de puntos; el fondo ahora es liso (se deja la clase sin efecto). */
+
+/* Escena con parallax: las variables --rx/--ry las fija el componente Escena */
+.escena {
+  --rx: 0;
+  --ry: 0;
+  /* Sin giro: rotar la escena deformaba la tarjeta de Luca y torcía su texto.
+     La profundidad viene del parallax por capas (cada capa se desplaza a distinta velocidad). */
+}
+.capa-1,
+.capa-2,
+.capa-3,
+.capa-fondo {
+  transition: transform 0.3s ease-out;
+}
+.capa-1 {
+  transform: translateZ(18px) translate(calc(var(--rx) * -5px), calc(var(--ry) * -4px));
+}
+.capa-2 {
+  transform: translateZ(40px) translate(calc(var(--rx) * -11px), calc(var(--ry) * -8px));
+}
+.capa-3 {
+  transform: translateZ(60px) translate(calc(var(--rx) * -15px), calc(var(--ry) * -11px));
+}
+.capa-fondo {
+  transform: translateZ(-60px) translate(calc(var(--rx) * 18px), calc(var(--ry) * 13px));
+}
+
+/* Tarjetas con inclinación: el componente Tilt fija --tx/--ty. Sin brillos ni velos blancos. */
+.inclinable {
+  --tx: 0;
+  --ty: 0;
+  transform: perspective(1000px) rotateX(calc(var(--ty) * -1deg)) rotateY(calc(var(--tx) * 1deg))
+    translateZ(0);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  will-change: transform;
+}
+
+/* ---------- Sistema de tarjetas ---------- */
+.tarjeta {
+  position: relative;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid rgb(20 33 61 / 0.08);
+  box-shadow:
+    0 1px 2px rgb(20 33 61 / 0.05),
+    0 18px 44px -26px rgb(20 33 61 / 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+/* Borde degradado azul→naranja que aparece al pasar el cursor */
+.tarjeta::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, var(--color-azul), transparent 42%, transparent 58%, var(--color-naranja));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.tarjeta:not(.inclinable):hover {
+  transform: translateY(-4px);
+}
+.tarjeta:hover {
+  box-shadow:
+    0 2px 4px rgb(20 33 61 / 0.06),
+    0 30px 60px -28px rgb(20 33 61 / 0.5);
+}
+.tarjeta:hover::after,
+.tarjeta.activa::after {
+  opacity: 1;
+}
+
+/* Inversión de color al pasar el cursor o cuando la tarjeta está activa */
+.invertible:hover,
+.invertible.activa {
+  background: var(--color-tinta);
+  border-color: var(--color-tinta);
+  color: #ffffff;
+}
+.invertible:hover .inv-titulo,
+.invertible.activa .inv-titulo {
+  color: #ffffff;
+}
+.invertible:hover .inv-texto,
+.invertible.activa .inv-texto {
+  color: rgb(255 255 255 / 0.74);
+}
+.invertible:hover .inv-etiqueta,
+.invertible.activa .inv-etiqueta {
+  color: rgb(255 255 255 / 0.6);
+}
+.invertible:hover .inv-icono,
+.invertible.activa .inv-icono {
+  background-color: #ffffff;
+  background-image: none;
+  color: var(--color-tinta);
+}
+.invertible:hover .inv-marca,
+.invertible.activa .inv-marca {
+  color: rgb(255 255 255 / 0.09);
+}
+.invertible:hover .inv-chip,
+.invertible.activa .inv-chip {
+  background: rgb(255 255 255 / 0.12);
+  color: #ffffff;
+}
+.invertible:hover .inv-flecha,
+.invertible.activa .inv-flecha {
+  transform: translateX(4px);
+  color: var(--color-naranja);
+}
+
+/* Subrayado del título al pasar el cursor */
+.subrayable:hover .sub-titulo {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--color-naranja);
+  text-underline-offset: 5px;
+}
+
+/* Numeral grande de fondo */
+.marca-agua {
+  position: absolute;
+  right: 18px;
+  top: 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 76px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgb(31 79 216 / 0.07);
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.25s ease;
+}
+
+/* Detalle desplegable (Garantías) */
+.desplegable {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.desplegable > * {
+  overflow: hidden;
+}
+.abierta .desplegable {
+  grid-template-rows: 1fr;
+}
+
+/* Iconos con volumen: solo una sombra exterior suave, sin líneas ni brillos internos */
+.relieve {
+  box-shadow: 0 10px 20px -8px rgb(20 33 61 / 0.45);
+}
+
+/* Entrada de la vista previa del recorrido */
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.entrar {
+  animation: entrar 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes progreso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.progreso {
+  transform-origin: left;
+  animation: progreso var(--dur, 5s) linear both;
+}
+.pausado .progreso {
+  animation-play-state: paused;
+}
+
+/* Aparición al hacer scroll: solo se oculta cuando hay JavaScript (html.js) y hasta que Revelar añade .visible */
+.revelar {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+html.js .revelar:not(.visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+/* Botones y menú: nunca partidos en dos líneas */
+.nowrap,
+nav a {
+  white-space: nowrap;
+}
+
+/* Acordeón sin JavaScript */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-flecha {
+  transform: rotate(180deg);
+}
+details[open] > :not(summary) {
+  animation: entrar 0.25s ease-out both;
+}
+
+/* Franja en movimiento continuo (Franja.tsx) */
+@keyframes franja {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.franja-pista {
+  animation: franja 38s linear infinite;
+}
+.franja:hover .franja-pista {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .escena,
+  .inclinable {
+    transform: none !important;
+  }
+  .revelar {
+    opacity: 1;
+    transform: none;
+  }
+}
+/*
+  ---break---
+*/
+@theme inline {
+  --font-heading: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+/*
+  ---break---
+*/
+.dark {
+  --background: #0b1748;
+  --foreground: #ffffff;
+  --card: #0e1d5a;
+  --card-foreground: #ffffff;
+  --popover: #0e1d5a;
+  --popover-foreground: #ffffff;
+  --primary: #7cd0ff;
+  --primary-foreground: #0b1748;
+  --secondary: #163ba8;
+  --secondary-foreground: #ffffff;
+  --muted: #163ba8;
+  --muted-foreground: #bcd0ff;
+  --accent: #ff7a29;
+  --accent-foreground: #ffffff;
+  --destructive: #ff6b6b;
+  --border: rgb(255 255 255 / 0.12);
+  --input: rgb(255 255 255 / 0.15);
+  --ring: #7cd0ff;
+  --chart-1: #7cd0ff;
+  --chart-2: #ff7a29;
+  --chart-3: #1fa855;
+  --chart-4: #2aabee;
+  --chart-5: #ffffff;
+  --sidebar: #0e1d5a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #7cd0ff;
+  --sidebar-primary-foreground: #0b1748;
+  --sidebar-accent: #163ba8;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 0.12);
+  --sidebar-ring: #7cd0ff;
+}
+/*
+  ---break---
+*/
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}

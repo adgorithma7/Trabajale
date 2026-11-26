@@ -4,6 +4,19 @@ Actualizado: 18 de noviembre de 2026.
 
 ---
 
+## 0. Versión Next.js (rama `landing-nextjs`)
+
+En esta rama la web se escribe en `landing/` (Next.js + React + Tailwind) y se compila como **sitio estático** (`output: "export"`). El resultado se copia a `sitio/`, así Cloudflare Pages la publica igual que antes: sin comando de build y con `sitio` como carpeta de salida. No hace falta cambiar nada en Cloudflare.
+
+- Editar textos y secciones: `landing/src` (enlaces y banner en `landing/src/config/site.ts`; ver `landing/README.md`).
+- Archivos que se copian tal cual (`consent.js`, `gracias.html`, `reel.mp4`, `_headers`, `.well-known/security.txt`, íconos): `landing/public/`.
+- Compilar y copiar a `sitio/`: `cd landing && npm install && npm run publicar`. Después `git add landing sitio`, `git commit` y `git push`.
+- `sitio/` se regenera entero en cada `npm run publicar`: no editar a mano lo que hay dentro.
+- Contacto: la web no publica correo. Los botones de contacto van al WhatsApp 0422-TRABAJA (+58 422 872 2252) y el canal de Telegram @trabajale se promociona para mantenerse informado de las vacantes nuevas. Los enlaces están en `landing/src/config/site.ts`.
+- El Pixel y el aviso de cookies siguen en `consent.js`; los eventos `Lead` (botones al formulario) y `Contact` (WhatsApp) se envían desde un pequeño script en `landing/src/app/layout.tsx`.
+
+La tabla de abajo describe la versión anterior en HTML puro (rama `main`).
+
 ## 1. Qué hay en la carpeta `sitio/`
 
 Todo lo que se publica está ahí. No hay base de datos ni servidor propio: es una página estática.

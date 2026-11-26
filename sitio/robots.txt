@@ -1,4 +1,5 @@
-User-agent: *
+User-Agent: *
 Allow: /
+Disallow: /piezas
 
 Sitemap: https://trabajale.ai/sitemap.xml
