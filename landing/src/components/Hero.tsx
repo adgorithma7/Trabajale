@@ -56,7 +56,7 @@ export function Hero({
   return (
     <div ref={ref} className="malla-hero reticula relative overflow-hidden text-white">
       <Fondo3DCarga />
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 md:grid-cols-[1.05fr_1fr] md:pb-20 md:pt-20 lg:gap-16">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 md:pb-20 md:pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
         {/* Texto */}
         <motion.div className="relative z-10" variants={contenedor} initial="oculto" animate="visible" style={{ y: textoY, opacity: textoOpacidad }}>
           <motion.div variants={item}>
@@ -96,7 +96,7 @@ export function Hero({
         {/* Escena 3D: la tarjeta de equipo de Luca con chips flotantes */}
         <motion.div
           style={{ y: escenaY, rotateX: escenaGiroX, rotateY: escenaGiroY, scale: escenaEscala, transformPerspective: 1200 }}
-          className="relative mx-auto w-full max-w-[460px] md:max-w-none"
+          className="relative mx-auto w-full max-w-[460px] lg:max-w-none"
         >
         <motion.div
           variants={escena}
@@ -105,14 +105,15 @@ export function Hero({
           style={{ transformPerspective: 1200 }}
           className="perspectiva relative w-full"
         >
-          <Escena className="relative aspect-[4/5.2] w-full sm:aspect-[4/4.4]">
+          <Escena className="relative aspect-[4/5] w-full sm:aspect-[4/4.5]">
             <div
               className="capa-fondo absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-azul-vivo/40 blur-3xl"
               aria-hidden="true"
             />
 
-            <article className="capa-1 absolute inset-x-[10%] top-[4%] bottom-[6%] overflow-hidden rounded-[28px] border border-white/15 bg-[#0e1d5a] shadow-vidrio sm:inset-x-[12%]">
-              <div className="relative h-[58%] overflow-hidden bg-gradient-to-b from-azul-vivo to-azul sm:h-[60%]">
+            {/* Tarjeta de Luca: la foto ocupa el espacio que sobra y el texto nunca se corta */}
+            <article className="capa-1 absolute inset-x-[13%] bottom-[3%] top-[5%] flex flex-col overflow-hidden rounded-[28px] border border-white/15 bg-[#0e1d5a] shadow-vidrio">
+              <div className="relative min-h-0 flex-1 overflow-hidden bg-gradient-to-b from-azul-vivo to-azul">
                 <div
                   className="absolute inset-0 opacity-50"
                   style={{ backgroundImage: "radial-gradient(circle at 70% 30%, rgb(255 255 255 / .35), transparent 50%)" }}
@@ -125,16 +126,16 @@ export function Hero({
                   height={895}
                   priority
                   sizes="(min-width: 768px) 420px, 80vw"
-                  className="absolute bottom-0 left-1/2 h-[112%] w-auto -translate-x-1/2 object-cover object-top"
+                  className="absolute left-1/2 top-[6%] h-[130%] w-auto max-w-none -translate-x-1/2 object-cover object-top"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-noche/90 to-transparent" aria-hidden="true" />
-                <span className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full bg-noche/80 px-3 py-1 font-mono text-[11px]">
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0e1d5a] to-transparent" aria-hidden="true" />
+                <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-noche/80 px-3 py-1 font-mono text-[11px]">
                   <span className="animate-pulso h-2 w-2 rounded-full bg-verde" aria-hidden="true" />
                   En línea
                 </span>
               </div>
 
-              <div className="flex h-[42%] flex-col justify-between gap-3 bg-[#0e1d5a] p-4 sm:h-[40%] sm:p-5">
+              <div className="flex flex-none flex-col gap-3 bg-[#0e1d5a] p-4 sm:p-5">
                 <div>
                   <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/60">Equipo Trabájale</p>
                   <p className="mt-1 font-display text-2xl font-bold leading-none">Luca</p>
@@ -146,19 +147,20 @@ export function Hero({
               </div>
             </article>
 
-            <div className="capa-3 absolute -left-1 top-[40%] origin-left scale-90 sm:left-0 sm:scale-100">
-              <div className="animate-flotar">
-                <Chip icono={<IconoCampana size={18} />} titulo="Nueva vacante" texto="Atención al cliente · Remoto" />
+            {/* Tarjetas flotantes: dentro de la escena, en una sola línea y sin tapar la etiqueta "En línea" */}
+            <div className="capa-2 absolute left-0 top-[9%] hidden lg:block">
+              <div className="animate-flotar" style={{ animationDelay: "-5s" }}>
+                <Chip icono={<IconoEscudo size={18} />} titulo="Tus datos" texto="Solo lo que tú escribes" />
               </div>
             </div>
-            <div className="capa-2 absolute -right-1 top-[24%] origin-right scale-90 sm:right-0 sm:scale-100">
+            <div className="capa-3 absolute right-0 top-[27%]">
               <div className="animate-flotar-lento" style={{ animationDelay: "-3s" }}>
                 <Chip icono={<IconoSinDinero size={18} />} titulo="Sin costo" texto="Hoy, mañana y siempre" />
               </div>
             </div>
-            <div className="capa-2 absolute left-0 top-[7%] hidden sm:block">
-              <div className="animate-flotar" style={{ animationDelay: "-5s" }}>
-                <Chip icono={<IconoEscudo size={18} />} titulo="Tus datos" texto="Solo lo que tú escribes" />
+            <div className="capa-2 absolute left-0 top-[44%]">
+              <div className="animate-flotar">
+                <Chip icono={<IconoCampana size={18} />} titulo="Nueva vacante" texto="Atención al cliente · Remoto" />
               </div>
             </div>
           </Escena>
@@ -173,11 +175,11 @@ export function Hero({
 
 function Chip({ icono, titulo, texto }: { icono: React.ReactNode; titulo: string; texto: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-white bg-white py-2.5 pl-2.5 pr-4 text-tinta shadow-flotante">
-      <span className="relieve grid h-9 w-9 flex-none place-items-center rounded-xl bg-azul text-white">{icono}</span>
-      <span className="min-w-0">
-        <span className="block text-[13px] font-bold leading-tight">{titulo}</span>
-        <span className="block text-xs font-medium text-gris">{texto}</span>
+    <div className="flex w-max max-w-none items-center gap-2.5 rounded-2xl border border-white bg-white py-2 pl-2 pr-3.5 text-tinta shadow-flotante md:gap-3 md:py-2.5 md:pl-2.5 md:pr-4">
+      <span className="relieve grid h-8 w-8 flex-none place-items-center rounded-xl bg-azul text-white md:h-9 md:w-9">{icono}</span>
+      <span className="min-w-0 whitespace-nowrap">
+        <span className="block text-[12px] font-bold leading-tight md:text-[13px]">{titulo}</span>
+        <span className="block text-[11px] font-medium text-gris md:text-xs">{texto}</span>
       </span>
     </div>
   );

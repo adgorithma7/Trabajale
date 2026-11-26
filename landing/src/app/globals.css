@@ -172,13 +172,13 @@ h3 {
   transition: transform 0.25s ease-out;
 }
 .capa-1 {
-  transform: translateZ(40px) translate(calc(var(--rx) * -8px), calc(var(--ry) * -6px));
+  transform: translateZ(18px) translate(calc(var(--rx) * -5px), calc(var(--ry) * -4px));
 }
 .capa-2 {
-  transform: translateZ(90px) translate(calc(var(--rx) * -18px), calc(var(--ry) * -14px));
+  transform: translateZ(40px) translate(calc(var(--rx) * -9px), calc(var(--ry) * -7px));
 }
 .capa-3 {
-  transform: translateZ(140px) translate(calc(var(--rx) * -30px), calc(var(--ry) * -22px));
+  transform: translateZ(60px) translate(calc(var(--rx) * -13px), calc(var(--ry) * -10px));
 }
 .capa-fondo {
   transform: translateZ(-60px) translate(calc(var(--rx) * 14px), calc(var(--ry) * 10px));

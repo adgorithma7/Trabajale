@@ -25,11 +25,10 @@ export function Seccion({ id, children, fondo = "blanco", className = "" }: Prop
 export function Eyebrow({ children, claro = false }: { children: ReactNode; claro?: boolean }) {
   return (
     <p
-      className={`mb-3 inline-flex items-center gap-2.5 font-mono text-[12px] uppercase tracking-[0.18em] ${
+      className={`mb-3 inline-flex items-center font-mono text-[12px] uppercase tracking-[0.18em] ${
         claro ? "text-white/75" : "text-naranja"
       }`}
     >
-      <span className={`h-px w-6 ${claro ? "bg-white/60" : "bg-naranja"}`} aria-hidden="true" />
       {children}
     </p>
   );
