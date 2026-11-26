@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, RoundedBox } from "@react-three/drei";
 import type { Group, Mesh } from "three";
@@ -32,43 +32,24 @@ function useSeguirCursor(fuerza = 1, conScroll = false) {
   useFrame((estado, dt) => {
     const g = grupo.current;
     if (!g) return;
+    // Movimiento propio y continuo: la escena se mece y orbita sola aunque nadie mueva el ratón.
+    const t = estado.clock.elapsedTime;
+    const ay = Math.sin(t * 0.32) * 0.28 + Math.sin(t * 0.11) * 0.12;
+    const ax = Math.sin(t * 0.24 + 1.3) * 0.22;
+    const px = Math.sin(t * 0.18) * 0.4;
+    const py = Math.sin(t * 0.27 + 0.8) * 0.35;
     // Scroll normalizado (0 arriba, 1 tras una pantalla): las piezas giran y suben al bajar.
     const s = conScroll ? Math.min(window.scrollY / window.innerHeight, 1.5) : 0;
-    const ox = estado.pointer.x * 0.45 * fuerza + s * 0.9;
-    const oy = estado.pointer.y * 0.32 * fuerza - s * 0.35;
-    const k = Math.min(1, dt * 4);
-    g.rotation.y += (ox - g.rotation.y) * k;
-    g.rotation.x += (-oy - g.rotation.x) * k;
-    g.position.y += (s * 1.6 - g.position.y) * k;
-    g.position.x += (estado.pointer.x * 0.35 * fuerza - g.position.x) * k;
+    // El cursor se suma al movimiento propio.
+    const oy = ay + estado.pointer.x * 0.45 * fuerza + s * 0.9;
+    const ox = ax - estado.pointer.y * 0.32 * fuerza + s * 0.35;
+    const k = Math.min(1, dt * 3);
+    g.rotation.y += (oy - g.rotation.y) * k;
+    g.rotation.x += (ox - g.rotation.x) * k;
+    g.position.x += (px + estado.pointer.x * 0.35 * fuerza - g.position.x) * k;
+    g.position.y += (py + s * 1.6 - g.position.y) * k;
   });
   return grupo;
-}
-
-function useParticulas(n: number, semillaInicial = 7) {
-  return useMemo(() => {
-    const puntos: [number, number, number][] = [];
-    let semilla = semillaInicial;
-    const rnd = () => {
-      semilla = (semilla * 9301 + 49297) % 233280;
-      return semilla / 233280;
-    };
-    for (let i = 0; i < n; i++) puntos.push([(rnd() - 0.5) * 16, (rnd() - 0.5) * 10, -3 - rnd() * 7]);
-    return puntos;
-  }, [n, semillaInicial]);
-}
-
-function Particulas({ puntos }: { puntos: [number, number, number][] }) {
-  return (
-    <>
-      {puntos.map((p, i) => (
-        <mesh key={i} position={p}>
-          <sphereGeometry args={[0.03 + (i % 3) * 0.015, 8, 8]} />
-          <meshBasicMaterial color={i % 5 === 0 ? "#ff9a4d" : "#bcd0ff"} transparent opacity={0.6} />
-        </mesh>
-      ))}
-    </>
-  );
 }
 
 function GrupoHero() {
@@ -80,7 +61,6 @@ function GrupoHero() {
       anillo.current.rotation.x += dt * 0.08;
     }
   });
-  const particulas = useParticulas(80);
 
   return (
     <group ref={grupo}>
@@ -101,7 +81,7 @@ function GrupoHero() {
           <Material color="#9cc1ff" />
         </RoundedBox>
       </Pieza>
-      <Pieza posicion={[0.4, 2.6, -2.4]} velocidad={1.5}>
+      <Pieza posicion={[1.9, 2.7, -2.4]} velocidad={1.5}>
         <mesh rotation={[0.3, 0, 1.1]}>
           <capsuleGeometry args={[0.2, 0.7, 8, 24]} />
           <Material color="#dfe8ff" brillo={0.25} />
@@ -113,7 +93,6 @@ function GrupoHero() {
           <Material color="#5b8bff" />
         </mesh>
       </Pieza>
-      <Particulas puntos={particulas} />
     </group>
   );
 }
@@ -129,7 +108,6 @@ function GrupoCierre() {
     }
     if (anillo.current) anillo.current.rotation.z -= dt * 0.15;
   });
-  const particulas = useParticulas(50, 13);
 
   return (
     <group ref={grupo}>
@@ -156,7 +134,6 @@ function GrupoCierre() {
           <Material color="#9cc1ff" />
         </mesh>
       </Pieza>
-      <Particulas puntos={particulas} />
     </group>
   );
 }

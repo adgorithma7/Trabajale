@@ -5,8 +5,8 @@ import { AnimatePresence, motion, useMotionValue, useSpring, type Variants } fro
 import { usePrefiereMenosMovimiento } from "@/lib/usePrefiereMenosMovimiento";
 
 export interface Diapositiva {
-  /** Etiqueta pequeña en monoespaciada sobre el titular. */
-  chip: string;
+  /** Etiqueta pequeña en monoespaciada sobre el titular (opcional). */
+  chip?: string;
   titulo: string;
   /** Parte del titular en degradado naranja. */
   destacado: string;
@@ -74,13 +74,15 @@ function Titular({ d, como, clase }: { d: Diapositiva; como: "h1" | "h2" | "p"; 
 function Contenido({ d, como, clase }: { d: Diapositiva; como: "h1" | "h2" | "p"; clase: string }) {
   return (
     <>
-      <motion.p
-        variants={linea}
-        className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 font-mono text-[12px] uppercase tracking-[0.12em]"
-      >
-        <span className="h-2 w-2 rounded-full bg-naranja shadow-[0_0_12px_#ff7a29]" aria-hidden="true" />
-        {d.chip}
-      </motion.p>
+      {d.chip && (
+        <motion.p
+          variants={linea}
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 font-mono text-[12px] uppercase tracking-[0.12em]"
+        >
+          <span className="h-2 w-2 rounded-full bg-naranja shadow-[0_0_12px_#ff7a29]" aria-hidden="true" />
+          {d.chip}
+        </motion.p>
+      )}
       <Titular d={d} como={como} clase={clase} />
       <motion.div variants={linea} className="mt-6 max-w-[38ch] text-lg font-medium text-white/85 sm:text-xl">
         {d.texto}
@@ -184,7 +186,7 @@ export function Carrusel3D({ diapositivas, nivel = "h1", duracion = 4000, claseT
                 key={i}
                 type="button"
                 onClick={() => ir(i, i >= actual ? 1 : -1)}
-                aria-label={`Opción ${i + 1} de ${n}: ${d.chip}`}
+                aria-label={`Opción ${i + 1} de ${n}: ${d.titulo} ${d.destacado}`}
                 aria-current={i === actual ? "true" : undefined}
                 className={`relative h-2.5 overflow-hidden rounded-full transition-[width,background-color] ${
                   i === actual ? "w-12 bg-white/25" : "w-2.5 bg-white/30 hover:bg-white/60"

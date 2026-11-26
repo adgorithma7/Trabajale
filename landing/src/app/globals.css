@@ -162,16 +162,7 @@ h3 {
     radial-gradient(70% 80% at 50% 110%, rgb(31 79 216 / 0.8) 0%, transparent 60%),
     linear-gradient(180deg, #0b1748 0%, #142d8c 100%);
 }
-.reticula::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgb(255 255 255 / 0.12) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 75%);
-  pointer-events: none;
-}
+/* .reticula: antes pintaba una retícula de puntos; el fondo ahora es liso (se deja la clase sin efecto). */
 
 /* Escena con parallax: las variables --rx/--ry las fija el componente Escena */
 .escena {
